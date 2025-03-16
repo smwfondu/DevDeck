@@ -15,3 +15,9 @@ success within what is an incredibly difficult and competitive field!
 ## Live Demo
 
 To run the program: [DevDeck](https://www.cs.uml.edu/~wfondoul/)
+
+## Technology Stack
+
+* Frontend: HTML, CSS
+* Backend: -
+* Deployment: UML Server (frontend & backend)
