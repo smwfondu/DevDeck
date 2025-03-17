@@ -22,6 +22,10 @@ header h1 {
     font-size: 36px; 
 }
 
+.button-header {
+    background-color: rgb(188, 229, 248);
+}
+
 .columns {
     display: flex;
     flex: 1; 
@@ -34,7 +38,24 @@ header h1 {
 
 .left-column {
     background-color: #e0e0e0;
-    flex: 1; 
+    flex: 1;
+
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #b1abab;
+}
+
+.template {
+    background-color: white;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .middle-column {
@@ -45,4 +66,16 @@ header h1 {
 .right-column {
     background-color: #e0e0e0; 
     flex: 1;
+    
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+.project {
+    background-color: white;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
