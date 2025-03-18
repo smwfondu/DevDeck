@@ -58,7 +58,7 @@ button {
     align-items: center;
 }
 
-.template_selected {
+.selected {
     border: solid red 4px;
 }
 
