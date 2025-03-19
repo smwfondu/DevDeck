@@ -58,10 +58,6 @@ button {
     align-items: center;
 }
 
-.selected {
-    border: solid red 4px;
-}
-
 .middle-column {
     background-color: #f4f4f4;
     flex: 3;
