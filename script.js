@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 templateEls[j].style.border = "solid 4px transparent";
               }
               this.style.border = "solid 4px red"; // Apply the border to current element
-              templateSelectedEl.innerHTML = this.innerHTML; // Display this element on the middle column
               
               // apply the styles from the JSON
               let selectedTemplate = templates[i];
