@@ -1,0 +1,29 @@
+[
+    {
+        "id": "template1",
+        "name": "Template #1",
+        "styles": {
+            "backgroundColor": "#f0f0f0",
+            "color": "#333",
+            "fontFamily": "Arial, sans-serif"
+        }
+    },
+    {
+        "id": "template2",
+        "name": "Template #2",
+        "styles": {
+            "backgroundColor": "#e0f8ff",
+            "color": "#0056b3",
+            "fontFamily": "Georgia, serif"
+        }
+    },
+    {
+        "id": "template3",
+        "name": "Template #3",
+        "styles": {
+            "backgroundColor": "#f9f0e0",
+            "color": "#663300",
+            "fontFamily": "Verdana, sans-serif"
+        }
+    }
+]
