@@ -2,6 +2,7 @@
 #include <curl/curl.h>
 #include <string>
 #include <vector>
+#include "github_integration.hpp"
 
 using namespace std;
 
@@ -102,27 +103,3 @@ vector<string> getRepoURLs(const string& username) {
 
     return repoURLs;
 }
-/*
-// Main function for testing
-int main() {
-    string username;
-    cout << "Enter GitHub username: ";
-    cin >> username;
-
-    vector<string> names = getRepoNames(username);
-    vector<string> languages = getRepoLanguages(username);
-    vector<string> descriptions = getRepoDescriptions(username);
-    vector<string> urls = getRepoURLs(username);
-
-    cout << "\nGitHub Repositories for: " << username << "\n";
-    for (size_t i = 0; i < names.size(); i++) {
-        cout << "----------------------\n";
-        cout << "Repo Name: " << names[i] << "\n";
-        cout << "Description: " << descriptions[i] << "\n";
-        cout << "Language: " << languages[i] << "\n";
-        cout << "URL: " << urls[i] << "\n";
-    }
-
-    return 0;
-}
-*/
