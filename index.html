@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevDeck</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modal_template.css">
 </head>
 <body>
     <header>
@@ -13,7 +14,7 @@
     </header>
     <div class="columns">
         <div class="column left-column">
-            <button>Available Templates</button>
+            <button id="button_template">Customization</button>
             <div class="template">Template #1</div>
             <div class="template">Template #2</div>
             <div class="template">Template #3</div>
@@ -94,6 +95,13 @@
             <div class="project">GitHub Project #1</div>
             <div class="project">GitHub Project #2</div>
             <div class="project">GitHub Project #3</div>
+        </div>
+    </div>
+    <!--Dialog Box (Template)-->
+    <div id="modal_template" class="modal">
+        <div class="modal_content">
+            <p>This is a simple modal box!</p>
+            <button id="button_template_close">Close</button>
         </div>
     </div>
     <script src="./script.js"></script>

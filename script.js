@@ -43,3 +43,25 @@ for (let i = 0; i < projectEls.length; i++) {
       this.style.border = "solid 4px red"; // Apply the border to current element
     };
 }
+
+/*Dialog Box (Template)*/
+const modalTemplate = document.getElementById("modal_template");
+const buttonTemplate = document.getElementById("button_template");
+const buttonTemplateClose = document.getElementById("button_template_close");
+
+// Open the template modal when the "Available Templates" button is clicked
+buttonTemplate.onclick = function() {
+  modalTemplate.style.display = "block";
+}
+
+// Close the template modal when the "Close" button is clicked
+buttonTemplateClose.onclick = function() {
+  modalTemplate.style.display = "none";
+}
+
+// Close the template modal when the user clicks outside of it
+window.onclick = function(event) {
+  if (event.target == modalTemplate) {
+    modalTemplate.style.display = "none";
+  }
+}
