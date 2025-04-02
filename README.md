@@ -31,5 +31,4 @@ on using coninuous integration tools to automatically push changes to the websit
 ## Testing
 
 Our testing file for DevDeck is found at unit_tests.cpp and contain all of the unit tests to test the functionality of the 
-GitHub integration (reading data from a GitHub user's repositories). To run the tests simply build them using:  
-"g++ -o test unit_tests.cpp -lboost_unit_test_framework" and run the tests by simply running: "./test"
+GitHub integration (reading data from a GitHub user's repositories). To run the tests simply build them usingour supplied Makefile and the command: make. The github_main.cpp may be run for an example output using ./Github_integration and the tests may be run using ./test

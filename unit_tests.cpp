@@ -218,11 +218,37 @@ BOOST_AUTO_TEST_CASE(testFetchGitHubDataOnEmpty) {
 }
 
 //test case 19
-BOOST_AUTO_TEST_CASE(Test19) {
-    
+BOOST_AUTO_TEST_CASE(testGitHubIntegrationTotal) {
+    string names[] = {"AbstractSpace", "DevDeck", "PirateHorrorGame", "TargetShooter", "testpart2"};
+    string languages[] = {"C#", "C++", "C#", "C#", "Not specified"};
+    string descriptions[] = {"No description", "No description", "The Death of a Pirate", 
+        "COMP 4110 Software Engineering I: Design 1 Project", "test for our game"};
+    string urls[] = {"https://github.com/smwfondu", "https://github.com/smwfondu/AbstractSpace", 
+        "https://github.com/smwfondu", "https://github.com/smwfondu/DevDeck", "https://github.com/smwfondu"};
+    size_t cnt = 0;
+
+    vector<string> namesV = getRepoNames("smwfondu");
+    vector<string> languagesV = getRepoLanguages("smwfondu");
+    vector<string> descriptionsV = getRepoDescriptions("smwfondu");
+    vector<string> urlsV = getRepoURLs("smwfondu");
+
+    for (size_t i = 0; i < namesV.size(); i++, cnt++) {
+        BOOST_REQUIRE_EQUAL(namesV[i], names[cnt]);
+        BOOST_REQUIRE_EQUAL(languagesV[i], languages[cnt]);
+        BOOST_REQUIRE_EQUAL(descriptionsV[i], descriptions[cnt]);
+        BOOST_REQUIRE_EQUAL(urlsV[i], urls[cnt]);
+    }
 }
 
 //test case 20
-BOOST_AUTO_TEST_CASE(Test20) {
-    
+BOOST_AUTO_TEST_CASE(testGitHubIntegrationTotalOnEmpty) {
+    vector<string> namesV = getRepoNames("ryanc3258");
+    vector<string> languagesV = getRepoLanguages("ryanc3258");
+    vector<string> descriptionsV = getRepoDescriptions("ryanc3258");
+    vector<string> urlsV = getRepoURLs("ryanc3258");
+
+    BOOST_REQUIRE_EQUAL(namesV.empty(), true);
+    BOOST_REQUIRE_EQUAL(languagesV.empty(), true);
+    BOOST_REQUIRE_EQUAL(descriptionsV.empty(), true);
+    BOOST_REQUIRE_EQUAL(urlsV.empty(), true);
 }
