@@ -1,0 +1,49 @@
+{
+  "user_id": "user123",
+  "username": "CodeNinja42",
+  "repositories": [
+    {
+      "repo_name": "data-analysis-project",
+      "language": "Python",
+      "forks": 30,
+      "last_updated": "2023-10-27T10:00:00Z",
+      "file_count": 50
+    },
+    {
+      "repo_name": "web-dev-portfolio",
+      "language": "JavaScript",
+      "forks": 15,
+      "last_updated": "2023-11-15T14:30:00Z",
+      "file_count": 25
+    },
+    {
+      "repo_name": "machine-learning-models",
+      "language": "Python",
+      "forks": 45,
+      "last_updated": "2023-12-01T12:00:00Z",
+      "file_count": 75
+    },
+    {
+      "repo_name": "react-native-app",
+      "language": "JavaScript",
+      "forks": 22,
+      "last_updated": "2023-12-10T16:45:00Z",
+      "file_count": 35
+    }
+    ,
+    {
+      "repo_name": "api-development",
+      "language": "Node.js",
+      "forks": 18,
+      "last_updated": "2023-12-18T09:15:00Z",
+      "file_count": 40
+    },
+     {
+      "repo_name": "database-management",
+      "language": "SQL",
+      "forks": 10,
+      "last_updated": "2023-12-22T11:30:00Z",
+      "file_count": 60
+    }
+  ]
+}

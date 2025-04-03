@@ -31,19 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-let projectEls = document.querySelectorAll(".project"); // templates
-
-/* Highlight GitHub project based on the user selection */
-for (let i = 0; i < projectEls.length; i++) {
-  projectEls[i].onclick = function() {
-      for (let j = 0; j < projectEls.length; j++) { // Remove the border from all divs first
-        projectEls[j].style.border = "solid 4px transparent";
-      }
-      this.style.border = "solid 4px red"; // Apply the border to current element
-    };
-}
-
 /*Dialog Box (Template)*/
 const modalTemplate = document.getElementById("modal_template");
 const buttonTemplate = document.getElementById("button_template");
@@ -65,3 +52,31 @@ window.onclick = function(event) {
     modalTemplate.style.display = "none";
   }
 }
+
+/*---------------GitHub Project---------------*/
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('user_repos_fake_data.json')  //  Fetch the data from .json file
+  .then(function(response) {          //  Convert the data to JS object
+    return response.json();
+  })
+    .then(function(user){
+      const githubProjectsEl = document.getElementById('github-projects');
+
+      user.repositories.forEach((repo, index) => {
+        const project = document.createElement('div');
+        project.innerHTML = `GitHub Project: ${index + 1}`;
+        project.classList.add('project');
+        githubProjectsEl.appendChild(project);
+        
+        project.addEventListener('click', function() {
+          document.querySelectorAll('.project').forEach(el => {
+            el.style.border = 'solid 4px transparent';
+          });
+          this.style.border = '4px solid red';
+        });
+      });
+    })
+  .catch(function(error){
+    console.log('Error loading templates:', error);
+  });
+});

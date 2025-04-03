@@ -85,3 +85,12 @@ button {
     justify-content: center;
     align-items: center;
 }
+
+.github-projects-section {
+    background-color: #e0e0e0; 
+    flex: 1;
+    
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
