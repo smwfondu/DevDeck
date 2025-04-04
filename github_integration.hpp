@@ -1,3 +1,6 @@
+#ifndef GITHUB_API_HPP
+#define GITHUB_API_HPP
+
 #include <iostream>
 #include <curl/curl.h>
 #include <string>
@@ -11,4 +14,7 @@ string extractValue(const string& json, const string& key);
 vector<string> getRepoNames(const string& username);
 vector<string> getRepoLanguages(const string& username);
 vector<string> getRepoDescriptions(const string& username);
-vector<string> getRepoURLs(const string& username);
+vector<string> getRepoURLs(const string& username, const vector<string>& repoNames); // Updated function signature
+
+#endif // GITHUB_API_HPP
+
