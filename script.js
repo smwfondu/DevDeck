@@ -61,18 +61,27 @@ document.addEventListener('DOMContentLoaded', function(){
   })
     .then(function(user){
       const githubProjectsEl = document.getElementById('github-projects');
+      const displayProjectsEl = document.getElementById('projects'); 
 
       user.repositories.forEach((repo, index) => {
+        /* Display all the projects of the user to the right column */
         const project = document.createElement('div');
-        project.innerHTML = `GitHub Project: ${index + 1}`;
+        project.innerText = repo.repo_name;
         project.classList.add('project');
         githubProjectsEl.appendChild(project);
         
+        /* Highlight the project the user selects */
         project.addEventListener('click', function() {
           document.querySelectorAll('.project').forEach(el => {
             el.style.border = 'solid 4px transparent';
           });
           this.style.border = '4px solid red';
+
+          /* Display the content in the middle column */
+          const projectNameEl = document.createElement('div');
+          console.log(project);
+          displayProjectsEl.innerText = project.innerText;
+
         });
       });
     })
