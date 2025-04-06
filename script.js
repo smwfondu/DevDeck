@@ -78,10 +78,27 @@ document.addEventListener('DOMContentLoaded', function(){
           this.style.border = '4px solid red';
 
           /* Display the content in the middle column */
-          const projectNameEl = document.createElement('div');
-          console.log(project);
-          displayProjectsEl.innerText = project.innerText;
-
+          displayProjectsEl.innerHTML = `
+            <div>
+              <div>
+                <span>${repo.repo_name}</span>
+                <span>
+                  |
+                  <a href="#">${repo.link}</a> 
+                </span>
+              </div>
+              <span>Technologies: ${repo.language}</span>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <p>
+                            ${repo.description}
+                        </p>
+                    </div>
+                </div>
+            </div>
+          `;
         });
       });
     })
