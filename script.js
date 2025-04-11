@@ -1,36 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('templates.json') // fetch the JSON data
-    .then(function(response) {
-      return response.json(); // convert into javascript objects
-    })
-      .then(function(templates) {
-        let templateEls = document.querySelectorAll(".template"); // templates
-
-        var templateSelectedEl = document.querySelector(".template-selected");
-
-        /* Highlight template based on the user selection */
-        for (let i = 0; i < templateEls.length; i++) {
-            templateEls[i].onclick = function() {
-              for (let j = 0; j < templateEls.length; j++) { // Remove the border from all divs first
-                templateEls[j].style.border = "solid 4px transparent";
-              }
-              this.style.border = "solid 4px red"; // Apply the border to current element
-              
-              // apply the styles from the JSON
-              let selectedTemplate = templates[i];
-              let styles = selectedTemplate.styles;
-
-              templateSelectedEl.style.backgroundColor = styles.backgroundColor;
-              templateSelectedEl.style.color = styles.color;
-              templateSelectedEl.style.fontFamily = styles.fontFamily;
-            };
-        }
-    })
-    .catch(function(error){
-      console.error('Error loading templates:', error);
-    });
-});
-
 /*Dialog Box (Template)*/
 const modalTemplate = document.getElementById("modal_template");
 const buttonTemplate = document.getElementById("button_template");
@@ -135,5 +102,58 @@ document.addEventListener('DOMContentLoaded', function(){
     })
   .catch(function(error) { // Check erros in parsing the user data
     console.log('Error loading templates:', error);
+  });
+});
+
+let currentTemplate = null;
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('templates.json')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(templates) {
+      let templateEls = document.querySelectorAll(".template");
+      var templateSelectedEl = document.querySelector(".template-selected");
+
+      for (let i = 0; i < templateEls.length; i++) {
+        templateEls[i].onclick = function() {
+          for (let j = 0; j < templateEls.length; j++) {
+            templateEls[j].style.border = "solid 4px transparent";
+          }
+          this.style.border = "solid 4px red";
+          
+          // Store the selected template
+          currentTemplate = templates[i];
+          let styles = currentTemplate.styles;
+
+          templateSelectedEl.style.backgroundColor = styles.backgroundColor;
+          templateSelectedEl.style.color = styles.color;
+          templateSelectedEl.style.fontFamily = styles.fontFamily;
+        };
+      }
+    })
+    .catch(function(error){
+      console.error('Error loading templates:', error);
+    });
+
+  // PDF Export Functionality
+  document.getElementById('export-pdf').addEventListener('click', function() {
+    if (!currentTemplate) {
+      alert('Please select a template first');
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    doc.setFont(currentTemplate.styles.fontFamily.split(',')[0].trim());
+    doc.setTextColor(currentTemplate.styles.color);
+    
+    const element = document.querySelector('.template-selected');
+    const text = element.innerText;
+
+    doc.text(text, 10, 10);
+    doc.save('resume.pdf');
   });
 });

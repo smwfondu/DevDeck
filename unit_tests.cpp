@@ -38,8 +38,9 @@ BOOST_AUTO_TEST_CASE(testGetRepoDescriptionsStringLength) {
 //test case 5
 BOOST_AUTO_TEST_CASE(testGetRepoURLsStringLength) {
     vector<string> result;
+    vector<string> names = getRepoNames("smwfondu");
 
-    BOOST_REQUIRE_NO_THROW(result = getRepoURLs("smwfondu"));
+    BOOST_REQUIRE_NO_THROW(result = getRepoURLs("smwfondu", names));
     BOOST_REQUIRE_EQUAL(result.empty(), false);
 }
 
@@ -70,8 +71,9 @@ BOOST_AUTO_TEST_CASE(testGetRepoDescriptionsOnEmpty) {
 //test case 9
 BOOST_AUTO_TEST_CASE(testGetRepoURLsOnEmpty) {
     vector<string> result;
+    vector<string> names = getRepoNames("ryanc3258");
 
-    BOOST_REQUIRE_NO_THROW(result = getRepoURLs("ryanc3258"));
+    BOOST_REQUIRE_NO_THROW(result = getRepoURLs("ryanc3258", names));
     BOOST_REQUIRE_EQUAL(result.empty(), true);
 }
 
@@ -117,8 +119,9 @@ BOOST_AUTO_TEST_CASE(testGetRepoDescriptionsSpecific) {
 //test case 13
 BOOST_AUTO_TEST_CASE(testGetRepoURLsSpecific) { //URLs are not correct
     vector<string> result;
+    vector<string> names = getRepoNames("smwfondu");
 
-    BOOST_REQUIRE_NO_THROW(result = getRepoURLs("smwfondu"));
+    BOOST_REQUIRE_NO_THROW(result = getRepoURLs("smwfondu", names));
     //BOOST_REQUIRE_EQUAL(result.size(), 5);
     BOOST_REQUIRE_EQUAL(result[0], "https://github.com/smwfondu");
     BOOST_REQUIRE_EQUAL(result[1], "https://github.com/smwfondu/AbstractSpace");
@@ -230,7 +233,7 @@ BOOST_AUTO_TEST_CASE(testGitHubIntegrationTotal) {
     vector<string> namesV = getRepoNames("smwfondu");
     vector<string> languagesV = getRepoLanguages("smwfondu");
     vector<string> descriptionsV = getRepoDescriptions("smwfondu");
-    vector<string> urlsV = getRepoURLs("smwfondu");
+    vector<string> urlsV = getRepoURLs("smwfondu", namesV);
 
     for (size_t i = 0; i < namesV.size(); i++, cnt++) {
         BOOST_REQUIRE_EQUAL(namesV[i], names[cnt]);
@@ -245,7 +248,7 @@ BOOST_AUTO_TEST_CASE(testGitHubIntegrationTotalOnEmpty) {
     vector<string> namesV = getRepoNames("ryanc3258");
     vector<string> languagesV = getRepoLanguages("ryanc3258");
     vector<string> descriptionsV = getRepoDescriptions("ryanc3258");
-    vector<string> urlsV = getRepoURLs("ryanc3258");
+    vector<string> urlsV = getRepoURLs("ryanc3258", namesV);
 
     BOOST_REQUIRE_EQUAL(namesV.empty(), true);
     BOOST_REQUIRE_EQUAL(languagesV.empty(), true);
