@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
       return response.json();
     })
     .then(function(templates) {
+      /*---------------Templates Section---------------*/
       let templateEls = document.querySelectorAll(".template");
       var templateSelectedEl = document.querySelector(".template-selected");
 
