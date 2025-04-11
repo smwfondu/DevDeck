@@ -4,7 +4,7 @@ int main() {
   string username;
   cout << "Enter GitHub username: ";
   cin >> username;
-
+  /*
   vector<string> names = getRepoNames(username);
   vector<string> languages = getRepoLanguages(username);
   vector<string> descriptions = getRepoDescriptions(username);
@@ -19,7 +19,9 @@ int main() {
     cout << "Language: "
          << (languages[i] == "null" ? "Not specified" : languages[i]) << "\n";
     cout << "URL: " << urls[i] << "\n";
-  }
+  }*/
+
+  writeJSONData(username);
 
   return 0;
 }

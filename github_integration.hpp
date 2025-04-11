@@ -5,6 +5,7 @@
 #include <curl/curl.h>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ vector<string> getRepoNames(const string& username);
 vector<string> getRepoLanguages(const string& username);
 vector<string> getRepoDescriptions(const string& username);
 vector<string> getRepoURLs(const string& username, const vector<string>& repoNames); // Updated function signature
+void writeJSONData(const string& username);
 
 #endif // GITHUB_API_HPP
 

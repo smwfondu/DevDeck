@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -102,4 +103,30 @@ vector<string> getRepoURLs(const string& username,
     repoURLs.push_back("https://github.com/" + username + "/" + repo);
   }
   return repoURLs;
+}
+
+void writeJSONData(const string& username) {
+  ofstream file;
+
+  file.open("github_data.json");
+
+  vector<string> names = getRepoNames(username);
+  vector<string> languages = getRepoLanguages(username);
+  vector<string> descriptions = getRepoDescriptions(username);
+  vector<string> urls = getRepoURLs(username, names);
+
+  file << "{\n" << "  \"username\": \"" << username << "\",\n";
+  file << "  \"repositories\": [\n";
+  for(int i = 0; i < names.size(); i++) {
+    file << "    {\n";
+    file << "      \"repo_name\": \"" << names[i] << "\",\n";
+    file << "      \"language\": \"" << languages[i] << "\",\n";
+    file << "      \"description\": \"" << descriptions[i] << "\",\n";
+    file << "      \"link\": \"" << urls[i] << "\"\n";
+    i + 1 < names.size() ? file << "    },\n" : file << "    }\n";
+  }
+  file << "  ]\n";
+  file << "}";
+
+  file.close();
 }
