@@ -64,45 +64,76 @@ document.addEventListener('DOMContentLoaded', function(){
       const displayProjectsEl = document.getElementById('projects'); 
 
       user.repositories.forEach((repo, index) => {
-        /* Display all the projects of the user to the right column */
+
+        /* User "GitHub projects" section */
         const project = document.createElement('div');
         project.innerText = repo.repo_name;
+        const addProjectInputEl = document.createElement('input');
+        addProjectInputEl.type = "checkbox";
+        addProjectInputEl.id = "myCheckbox" + index;
+        addProjectInputEl.name = "myCheckbox";
+        addProjectInputEl.value = "checked";
+        const addProjectLabelEl = document.createElement('label');
+        addProjectLabelEl.for = "myCheckbox" + index;
+        project.appendChild(addProjectInputEl);
+        project.appendChild(addProjectLabelEl);
         project.classList.add('project');
         githubProjectsEl.appendChild(project);
-        
-        /* Highlight the project the user selects */
-        project.addEventListener('click', function() {
+
+        project.addEventListener('click', function() { // Highlight the project the user selects
           document.querySelectorAll('.project').forEach(el => {
             el.style.border = 'solid 4px transparent';
           });
           this.style.border = '4px solid red';
+        });
 
-          /* Display the content in the middle column */
-          displayProjectsEl.innerHTML = `
-            <div>
-              <div>
-                <span>${repo.repo_name}</span>
-                <span>
-                  |
-                  <a href="#">${repo.link}</a> 
-                </span>
-              </div>
-              <span>Technologies: ${repo.language}</span>
-            </div>
-            <div>
-                <div>
-                    <div>
-                        <p>
-                            ${repo.description}
-                        </p>
-                    </div>
-                </div>
-            </div>
-          `;
+        /* Display user projects on the resume */
+        const checkbox = document.getElementById(project.children[0].id);
+        checkbox.addEventListener('change', function(event) {
+          if (event.target.checked) {
+            let alreadyExists = false; // Flag to track if the project already exists
+
+            console.log("This checkbox is checked");
+
+            // Check if the project already exists in the projects div
+            for (let j = 0; j < displayProjectsEl.children.length; j++) {
+              if (displayProjectsEl.children[j].id === repo.repo_name) {
+                alreadyExists = true;
+                break; // No need to continue checking if found
+              }
+            }
+            
+            // If the project doesn't exist, create and append it
+            if (!alreadyExists) {
+              const projectName = document.createElement('div');
+              projectName.innerText = repo.repo_name;
+              projectName.id = repo.repo_name;
+              displayProjectsEl.appendChild(projectName);
+            }
+
+          } else {
+
+            let alreadyExists = false; // Flag to track if the project already exists
+
+            // Check if the project already exists in the projects div
+            for (let j = 0; j < displayProjectsEl.children.length; j++) {
+              if (displayProjectsEl.children[j].id === repo.repo_name) {
+                console.log("The id exists");
+                alreadyExists = true;
+                break; // No need to continue checking if found
+              }
+            }
+            
+            // If the project doesn't exist, create and append it
+            if (alreadyExists) {
+              const childToRemove = document.getElementById(repo.repo_name);
+              displayProjectsEl.removeChild(childToRemove);
+            }
+          }
         });
       });
     })
-  .catch(function(error){
+  .catch(function(error) { // Check erros in parsing the user data
     console.log('Error loading templates:', error);
   });
 });
