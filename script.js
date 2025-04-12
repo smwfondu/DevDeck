@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function(){
   })
     .then(function(user){
       const githubProjectsEl = document.getElementById('github-projects');
-      const displayProjectsEl = document.getElementById('projects'); 
+      const printProjectEl = document.getElementById('projects');
+      const displayProjectEl = document.getElementById('to_display_project');
 
       user.repositories.forEach((repo, index) => {
 
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function(){
             el.style.border = 'solid 4px transparent';
           });
           this.style.border = '4px solid red';
+          displayProjectEl.innerText = this.innerText; 
         });
 
         /* Display user projects on the resume */
@@ -63,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function(){
             console.log("This checkbox is checked");
 
             // Check if the project already exists in the projects div
-            for (let j = 0; j < displayProjectsEl.children.length; j++) {
-              if (displayProjectsEl.children[j].id === repo.repo_name) {
+            for (let j = 0; j < printProjectEl.children.length; j++) {
+              if (printProjectEl.children[j].id === repo.repo_name) {
                 alreadyExists = true;
                 break; // No need to continue checking if found
               }
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function(){
               const projectName = document.createElement('div');
               projectName.innerText = repo.repo_name;
               projectName.id = repo.repo_name;
-              displayProjectsEl.appendChild(projectName);
+              printProjectEl.appendChild(projectName);
             }
 
           } else {
@@ -83,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function(){
             let alreadyExists = false; // Flag to track if the project already exists
 
             // Check if the project already exists in the projects div
-            for (let j = 0; j < displayProjectsEl.children.length; j++) {
-              if (displayProjectsEl.children[j].id === repo.repo_name) {
+            for (let j = 0; j < printProjectEl.children.length; j++) {
+              if (printProjectEl.children[j].id === repo.repo_name) {
                 console.log("The id exists");
                 alreadyExists = true;
                 break; // No need to continue checking if found
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function(){
             // If the project doesn't exist, create and append it
             if (alreadyExists) {
               const childToRemove = document.getElementById(repo.repo_name);
-              displayProjectsEl.removeChild(childToRemove);
+              printProjectEl.removeChild(childToRemove);
             }
           }
         });
