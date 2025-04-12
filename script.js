@@ -20,6 +20,8 @@ window.onclick = function(event) {
   }
 }
 
+const githubProjectsEl = document.getElementById('github-projects');
+
 /*---------------GitHub Project---------------*/
 document.addEventListener('DOMContentLoaded', function(){
   fetch('user_repos_fake_data.json')  //  Fetch the data from .json file
@@ -27,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function(){
     return response.json();
   })
     .then(function(user){
-      const githubProjectsEl = document.getElementById('github-projects');
       const printProjectEl = document.getElementById('projects');
       const displayProjectEl = document.getElementById('to_display_project');
 
@@ -103,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     })
   .catch(function(error) { // Check erros in parsing the user data
+    githubProjectsEl.innerText = "No projects are available";
     console.log('Error loading templates:', error);
   });
 });
