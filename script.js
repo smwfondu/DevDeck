@@ -24,7 +24,7 @@ const githubProjectsEl = document.getElementById('github-projects');
 
 /*---------------GitHub Project---------------*/
 document.addEventListener('DOMContentLoaded', function(){
-  fetch('user_repos_fake_data.json')  //  Fetch the data from .json file
+  fetch('github_data.json')  //  Fetch the data from .json file
   .then(function(response) {          //  Convert the data to JS object
     return response.json();
   })
