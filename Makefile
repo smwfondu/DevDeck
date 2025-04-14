@@ -27,4 +27,4 @@ $(PROGRAM).a: $(OBJECTS)
 	ar -rcs $@ $^
 
 clean:
-	rm *.o $(PROGRAM) test github_data.json
+	rm *.o $(PROGRAM) test
