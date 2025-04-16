@@ -123,11 +123,11 @@ BOOST_AUTO_TEST_CASE(testGetRepoURLsSpecific) { //URLs are not correct
 
     BOOST_REQUIRE_NO_THROW(result = getRepoURLs("smwfondu", names));
     //BOOST_REQUIRE_EQUAL(result.size(), 5);
-    BOOST_REQUIRE_EQUAL(result[0], "https://github.com/smwfondu");
-    BOOST_REQUIRE_EQUAL(result[1], "https://github.com/smwfondu/AbstractSpace");
-    BOOST_REQUIRE_EQUAL(result[2], "https://github.com/smwfondu");
-    BOOST_REQUIRE_EQUAL(result[3], "https://github.com/smwfondu/DevDeck");
-    BOOST_REQUIRE_EQUAL(result[4], "https://github.com/smwfondu");
+    BOOST_REQUIRE_EQUAL(result[0], "https://github.com/smwfondu/AbstractSpace");
+    BOOST_REQUIRE_EQUAL(result[1], "https://github.com/smwfondu/DevDeck");
+    BOOST_REQUIRE_EQUAL(result[2], "https://github.com/smwfondu/PirateHorrorGame");
+    BOOST_REQUIRE_EQUAL(result[3], "https://github.com/smwfondu/TargetShooter");
+    BOOST_REQUIRE_EQUAL(result[4], "https://github.com/smwfondu/testpart2");
 }
 
 //test case 14
@@ -193,23 +193,21 @@ BOOST_AUTO_TEST_CASE(testExtractValueRepoDescriptions) {
 
 //test case 17
 BOOST_AUTO_TEST_CASE(testExtractValueRepoURLs) {
-    string rawData;
-    string result;
+    vector<string> rawData;
+    vector<string> names = getRepoNames("smwfondu");
     size_t pos = 0;
     size_t cnt = 0;
-    string urls[] = {"https://github.com/smwfondu", "https://github.com/smwfondu/AbstractSpace", 
-        "https://github.com/smwfondu", "https://github.com/smwfondu/DevDeck", "https://github.com/smwfondu"};
+    string urls[] = {"https://github.com/smwfondu/AbstractSpace", "https://github.com/smwfondu/DevDeck", 
+        "https://github.com/smwfondu/PirateHorrorGame", "https://github.com/smwfondu/TargetShooter", 
+        "https://github.com/smwfondu/testpart2"};
 
-    BOOST_REQUIRE_NO_THROW(rawData = fetchGitHubData("smwfondu"));
+    BOOST_REQUIRE_NO_THROW(rawData = getRepoURLs("smwfondu", names));
 
-    while ((pos = rawData.find("\"html_url\":", pos)) != string::npos) {
-        BOOST_REQUIRE_NO_THROW(result = (extractValue(rawData.substr(pos), "html_url")));
-        //BOOST_REQUIRE_EQUAL(result, urls[cnt]);
+    while (cnt < rawData.size()) {
+        BOOST_REQUIRE_EQUAL(rawData[pos], urls[cnt]);
         pos++;
         cnt++;
     }
-
-    //BOOST_REQUIRE_EQUAL(cnt, 5);
 }
 
 //test case 18
@@ -226,8 +224,9 @@ BOOST_AUTO_TEST_CASE(testGitHubIntegrationTotal) {
     string languages[] = {"C#", "C++", "C#", "C#", "Not specified"};
     string descriptions[] = {"No description", "No description", "The Death of a Pirate", 
         "COMP 4110 Software Engineering I: Design 1 Project", "test for our game"};
-    string urls[] = {"https://github.com/smwfondu", "https://github.com/smwfondu/AbstractSpace", 
-        "https://github.com/smwfondu", "https://github.com/smwfondu/DevDeck", "https://github.com/smwfondu"};
+    string urls[] = {"https://github.com/smwfondu/AbstractSpace", "https://github.com/smwfondu/DevDeck", 
+            "https://github.com/smwfondu/PirateHorrorGame", "https://github.com/smwfondu/TargetShooter", 
+            "https://github.com/smwfondu/testpart2"};
     size_t cnt = 0;
 
     vector<string> namesV = getRepoNames("smwfondu");
