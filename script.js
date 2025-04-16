@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function(){
         project.appendChild(addProjectLabelEl);
         project.classList.add('project');
         githubProjectsEl.appendChild(project);
-
         project.addEventListener('click', function() { // Highlight the project the user selects
           document.querySelectorAll('.project').forEach(el => {
             el.style.border = 'solid 4px transparent';
@@ -62,9 +61,6 @@ document.addEventListener('DOMContentLoaded', function(){
         checkbox.addEventListener('change', function(event) {
           if (event.target.checked) {
             let alreadyExists = false; // Flag to track if the project already exists
-
-            console.log("This checkbox is checked");
-
             // Check if the project already exists in the projects div
             for (let j = 0; j < printProjectEl.children.length; j++) {
               if (printProjectEl.children[j].id === repo.repo_name) {
@@ -72,28 +68,36 @@ document.addEventListener('DOMContentLoaded', function(){
                 break; // No need to continue checking if found
               }
             }
-            
             // If the project doesn't exist, create and append it
             if (!alreadyExists) {
-              const projectName = document.createElement('div');
-              projectName.innerText = repo.repo_name;
-              projectName.id = repo.repo_name;
-              printProjectEl.appendChild(projectName);
+              const projectFinalEl = document.createElement('div');
+
+              /* Add information to the project */
+              const projectNameEl = document.createElement('div');          //  project name
+              projectNameEl.innerText = repo.repo_name;
+              projectFinalEl.appendChild(projectNameEl);
+              const projectLanguagesEl = document.createElement('div');     //  project programming languages
+              projectLanguagesEl.innerText = repo.language;
+              projectFinalEl.appendChild(projectLanguagesEl);
+              const projectDescriptionEl = document.createElement('div');   //  project description
+              projectDescriptionEl.innerText = repo.description;
+              projectFinalEl.appendChild(projectDescriptionEl);
+              const projectLinkEl = document.createElement('div');          //  project link
+              projectLinkEl.innerText = repo.link;
+              projectFinalEl.appendChild(projectLinkEl);
+
+              projectFinalEl.id = repo.repo_name;
+              printProjectEl.appendChild(projectFinalEl);
             }
-
           } else {
-
             let alreadyExists = false; // Flag to track if the project already exists
-
             // Check if the project already exists in the projects div
             for (let j = 0; j < printProjectEl.children.length; j++) {
               if (printProjectEl.children[j].id === repo.repo_name) {
-                console.log("The id exists");
                 alreadyExists = true;
                 break; // No need to continue checking if found
               }
             }
-            
             // If the project doesn't exist, create and append it
             if (alreadyExists) {
               const childToRemove = document.getElementById(repo.repo_name);
