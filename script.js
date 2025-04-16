@@ -24,7 +24,7 @@ const githubProjectsEl = document.getElementById('github-projects');
 
 /*---------------GitHub Project---------------*/
 document.addEventListener('DOMContentLoaded', function(){
-  fetch('github_data.json')  //  Fetch the data from .json file
+  fetch('user_repos_fake_data.json')  //  Fetch the data from .json file
   .then(function(response) {          //  Convert the data to JS object
     return response.json();
   })
@@ -53,7 +53,14 @@ document.addEventListener('DOMContentLoaded', function(){
             el.style.border = 'solid 4px transparent';
           });
           this.style.border = '4px solid red';
-          displayProjectEl.innerText = this.innerText; 
+
+          // Preview the project on the resume before adding
+          displayProjectEl.innerHTML = `
+              <div>${repo.repo_name}</div>
+              <div>${repo.language}</div>
+              <div>${repo.description}</div>
+              <div>${repo.link}</div>
+            `;
         });
 
         /* Display user projects on the resume */
