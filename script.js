@@ -48,23 +48,29 @@ document.addEventListener('DOMContentLoaded', function(){
         project.appendChild(addProjectLabelEl);
         project.classList.add('project');
         githubProjectsEl.appendChild(project);
+
+        const checkbox = document.getElementById(project.children[0].id);
+
         project.addEventListener('click', function() { // Highlight the project the user selects
           document.querySelectorAll('.project').forEach(el => {
             el.style.border = 'solid 4px transparent';
           });
           this.style.border = '4px solid red';
 
-          // Preview the project on the resume before adding
-          displayProjectEl.innerHTML = `
-              <div>${repo.repo_name}</div>
-              <div>${repo.language}</div>
-              <div>${repo.description}</div>
-              <div>${repo.link}</div>
-            `;
+          if (!checkbox.checked) {  // Preview the project on the resume before adding
+            displayProjectEl.innerHTML = `
+                <div>${repo.repo_name}</div>
+                <div>${repo.language}</div>
+                <div>${repo.description}</div>
+                <div>${repo.link}</div>
+              `;
+          } else {                  // Don't preview the project if already added on the resume
+            displayProjectEl.innerHTML = '';
+          }
+
         });
 
         /* Display user projects on the resume */
-        const checkbox = document.getElementById(project.children[0].id);
         checkbox.addEventListener('change', function(event) {
           if (event.target.checked) {
             let alreadyExists = false; // Flag to track if the project already exists
