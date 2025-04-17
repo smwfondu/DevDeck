@@ -1,6 +1,9 @@
 {
-  "user_id": "user123",
   "username": "CodeNinja42",
+  "full_name": "Alex Johnson",
+  "user_bio": "Full-Stack Developer",
+  "email": "alex.johnson@example.com",
+  "github_link": "https://github.com",
   "repositories": [
     {
       "repo_name": "data-analysis-project",
