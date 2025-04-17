@@ -19,7 +19,7 @@ To run the program: [DevDeck](https://www.cs.uml.edu/~wfondoul/)
 ## Technology Stack
 
 * Frontend: HTML, CSS
-* Backend: -
+* Backend: C++, JavaScript
 * Deployment: UML Server (frontend & backend)
 
 ## Cloning Our Project
