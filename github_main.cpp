@@ -21,7 +21,8 @@ int main() {
     cout << "URL: " << urls[i] << "\n";
   }*/
 
-  writeJSONData(username);
+  //auto window = browser->mainFrame()->executeJavaScript("window").asJsObject();
+  //window->putProperty("writeJSONData", &writeJSONData);
 
   return 0;
 }

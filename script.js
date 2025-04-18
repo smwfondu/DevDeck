@@ -179,3 +179,12 @@ document.addEventListener("DOMContentLoaded", function() {
     doc.save('resume.pdf');
   });
 });
+
+// Github_data.json generating
+document.getElementById('fetchButton').addEventListener('click', async () => {
+  const username = document.getElementById('githubUsername').value.trim();
+  if (!username) {
+      alert('Please enter a GitHub username');
+      return;
+  }
+});
