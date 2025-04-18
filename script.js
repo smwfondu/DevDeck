@@ -31,17 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .then(function(user){
       const printProjectEl = document.getElementById('projects');
       const displayProjectEl = document.getElementById('to_display_project');
-
-      /* Display the basic user information */
-      const usernameEl = document.getElementById('full_name');      // user full name
-      usernameEl.innerText = user.full_name;
-      const jobTitleEl = document.getElementById('job_title');      // user bio
-      jobTitleEl.innerText = user.user_bio;
-      const sampleLinkEl = document.getElementById('sample_link');  // user github link
-      sampleLinkEl.href = user.github_link;
-
-
-
+      
       user.repositories.forEach((repo, index) => {
 
         /* User "GitHub projects" section */
