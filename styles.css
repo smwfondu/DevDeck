@@ -94,3 +94,11 @@ button {
     flex-direction: column; 
     gap: 20px;
 }
+
+.education {
+    margin-top: 20px;
+}
+
+.button_education {
+    margin-top: 5px;
+}
