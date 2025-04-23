@@ -182,12 +182,51 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Github_data.json generating
 document.getElementById('fetchButton').addEventListener('click', async () => {
-  const username = document.getElementById('githubUsername').value.trim();
+  const username = document.getElementById('link').value.trim();
   if (!username) {
       alert('Please enter a GitHub username');
       return;
   }
+
+  try {
+    const data = await fetchGitHubData(username);
+    console.log(data);
+    const fs = require('fs')
+    fs.writeFile("github_data.json", data)
+    //document.getElementById('github-projects').textContent = JSON.stringify(data, null, 2);
+    // You can also process this data further for your resume builder
+  } catch (error) {
+    console.error('Error fetching github data:', error);
+    //document.getElementById('output').textContent = 'Error fetching data: ' + error.message;
+  }
 });
+
+async function fetchGitHubData(username) {
+  const url = "https://api.github.com/users/" + username + "/repos";
+  const response = await fetch(url, {
+      headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          // If you need authentication (higher rate limits):
+          // 'Authorization': 'token YOUR_GITHUB_TOKEN'
+      }
+  })
+
+  if (!response.ok) {
+    throw new Error("GitHub API error: ${response.status}");
+  }
+
+  const repos = await response.json();
+
+  return {
+      username,
+      repositories: repos.map(repo => ({
+          repo_name: repo.name,
+          language: repo.language,
+          description: repo.description,
+          link: repo.html_url
+      }))
+};
+};
 
 /*--------- Add more links ---------*/
 const linkButtonEl = document.getElementById('button_link');
