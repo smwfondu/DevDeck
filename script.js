@@ -189,6 +189,37 @@ document.getElementById('fetchButton').addEventListener('click', async () => {
   }
 });
 
+/*--------- Add more links ---------*/
+const linkButtonEl = document.getElementById('button_link');
+linkButtonEl.addEventListener('click', () => {
+  const linkSectionEl = document.getElementById('link_section');
+  const linkContainer = document.createElement('div');
+  linkContainer.style.marginTop = "5px";
+
+  const linkLabel = document.createElement('label');
+  linkLabel.setAttribute('for', 'link');
+  linkLabel.innerText = 'Link:';
+
+  const linkInput = document.createElement('input');
+  linkInput.type = 'url';
+  linkInput.id = 'link';
+  linkInput.name = 'link';
+  linkInput.placeholder = 'Enter a URL';
+
+  const removeButton = document.createElement('button');
+  removeButton.innerText = 'Remove';
+  removeButton.style.marginLeft = '10px';
+  removeButton.addEventListener('click', () => {
+    linkContainer.remove();
+  });
+
+  linkContainer.appendChild(linkLabel);
+  linkContainer.appendChild(linkInput);
+  linkContainer.appendChild(removeButton);
+
+  linkSectionEl.appendChild(linkContainer);
+});
+
 /*--------- Add more education section ---------*/
 const educationButtonEl = document.getElementById('button_education');
 educationButtonEl.addEventListener('click', () => {
