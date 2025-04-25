@@ -17,12 +17,12 @@
         <div class="column left-column">
             <button id="button_template">Customization</button>
 	    <button id="export-pdf">Export to PDF</button>
-            <div class="template">Template #1</div>
-            <div class="template">Template #2</div>
-            <div class="template">Template #3</div>
+            <div id="template_one" class="template">Template #1</div>
+            <div id="template_two" class="template">Template #2</div>
+            <div id="template_three" class="template">Template #3</div>
         </div>
-        <div class="column middle-column">
-            <div class="template-selected">
+        <div id="main_column" class="column middle-column">
+            <div id="custom_template" class="template-selected">
                 <div class="user_info full_name">
                     <label for="full_name">Full Name</label>
                     <input id="full_name" type="text" placeholder="Full Name" name="full_name">
@@ -33,19 +33,18 @@
                 </div>
                 <p>
                     <span id="link_section">
-                        <a id="sample_link" href="" target="_blank">GitHub link</a>
+                        <a id="sample_link" href="https://github.com/" target="_blank">GitHub link</a>
                     </span>
                     <button id="button_link">+</button>
                 </p>
-                <h2>Projects</h2>
                 <div id="projects">
-
+                    <h2>Projects</h2>
                 </div>
                 <div id="to_display_project">
 
                 </div>
-                <h2>Education</h2>
                 <div id="education">
+                    <h2>Education</h2>
                     <div class="education_one">
                         <div class="education-entry">
                             <label for="school_name">School Name</label>
@@ -64,54 +63,12 @@
                             <input id="graduation_year" type="text" placeholder="Graduation Year" name="graduation_year">
                         </div>
                     </div>
+                    <button class="button_education" id="button_education">+</button>
                 </div>
-                <button class="button_education" id="button_education">+</button>
-                <!-- Project 1 -->
-                <!-- <div>
-                    <div>
-                        <span>Project Name</span>
-                        <span>
-                            |
-                            <a>Link</a>
-                        </span>
-                    </div>
-                    <span>Technologies</span>
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-                                took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially 
-                                unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
-                                including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- Project 2 -->
-                <!-- <div>
-                    <div>
-                        <span>Project Name</span>
-                        <span>
-                            |
-                            <a>Link</a>
-                        </span>
-                    </div>
-                    <span>Technologies</span>
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-                                took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially 
-                                unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
-                                including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                    </div>
-                </div> -->
+            </div>
+            <!-- Template One -->
+            <div id="template_one_place" class="template_one_selected template-selected">
+                This is template one.
             </div>
         </div>
         <div class="column right-column">
