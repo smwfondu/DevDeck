@@ -102,3 +102,22 @@ button {
 .button_education {
     margin-top: 5px;
 }
+
+/* Template One */
+#template_one_place {
+    display: none;
+}
+.template_one_selected {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+/* Template Two */
+#template_two_place {
+    display: none;
+}
+
+/* Template Three */
+#template_three_place {
+    display: none;
+}
