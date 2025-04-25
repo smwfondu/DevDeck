@@ -1,25 +1,3 @@
-/*Dialog Box (Template)*/
-const modalTemplate = document.getElementById("modal_template");
-const buttonTemplate = document.getElementById("button_template");
-const buttonTemplateClose = document.getElementById("button_template_close");
-
-// Open the template modal when the "Available Templates" button is clicked
-buttonTemplate.onclick = function() {
-  modalTemplate.style.display = "block";
-}
-
-// Close the template modal when the "Close" button is clicked
-buttonTemplateClose.onclick = function() {
-  modalTemplate.style.display = "none";
-}
-
-// Close the template modal when the user clicks outside of it
-window.onclick = function(event) {
-  if (event.target == modalTemplate) {
-    modalTemplate.style.display = "none";
-  }
-}
-
 const githubProjectsEl = document.getElementById('github-projects');
 
 /*---------------GitHub Project---------------*/
@@ -264,4 +242,76 @@ educationButtonEl.addEventListener('click', () => {
   educationContainer.appendChild(removeButton);
 
   educationSectionEl.appendChild(educationContainer);
+});
+
+/* Applying templates to the resume */
+const CustomColumnEl = document.getElementById('custom_template');
+const TemplateOneColumnEl = document.getElementById('template_one_place');
+const TemplatetwoColumnEl = document.getElementById('template_two_place');
+const TemplatethreeColumnEl = document.getElementById('template_three_place');
+
+/* Customization */
+const buttonCustomization = document.getElementById('button_template');
+buttonCustomization.onclick = function() {
+  if (TemplateOneColumnEl) {
+    TemplateOneColumnEl.style.display = 'none';
+  }
+  if (CustomColumnEl) {
+    CustomColumnEl.style.display = 'block';
+  }
+};
+
+/* Template 1 */
+const buttonTemplateOne = document.getElementById('template_one');
+buttonTemplateOne.addEventListener('click', () => {
+  if (CustomColumnEl) {
+    CustomColumnEl.style.display = 'none';
+  }
+  if (TemplateOneColumnEl) {
+    TemplateOneColumnEl.style.display = 'block';
+  }
+  const fullNameInputEl = document.getElementById('full_name'); // get the user name
+  const bioInputEl = document.getElementById('bio');      // get the user bio
+  const linkInputEl = document.getElementById('link_section');      // get the user bio
+  const projects = document.getElementById('projects'); // get the user projects
+
+  // Clear the existing content
+  TemplateOneColumnEl.innerHTML = '';
+
+  // Add full name
+  const nameEl = document.createElement('h1');
+  nameEl.innerText = fullNameInputEl.value;
+  TemplateOneColumnEl.appendChild(nameEl);
+
+  // Add bio
+  const bioEl = document.createElement('p');
+  bioEl.innerText = bioInputEl.value;
+  TemplateOneColumnEl.appendChild(bioEl);
+
+  // Add projects
+  const projectsEl = document.createElement('div');
+  projectsEl.classList.add('projects-section');
+  Array.from(projects.children).forEach(project => {
+    const projectEl = document.createElement('div');
+    projectEl.classList.add('project-item');
+    projectEl.innerHTML = project.innerHTML; // Copy the project content
+    projectsEl.appendChild(projectEl);
+  });
+  TemplateOneColumnEl.appendChild(projectsEl);
+
+  console.log(TemplateOneColumnEl);
+});
+
+/* Template 2 */
+const buttonTemplateTwo = document.getElementById('template_two');
+buttonTemplateTwo.addEventListener('click', () => {
+  // Clear the existing content
+  TemplateOneColumnEl.innerHTML = '';
+});
+
+/* Template 3 */
+const buttonTemplateThree = document.getElementById('template_three');
+buttonTemplateThree.addEventListener('click', () => {
+  // Clear the existing content
+  TemplatethreeColumnEl.innerHTML = '';
 });
