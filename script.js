@@ -137,26 +137,73 @@ document.addEventListener("DOMContentLoaded", function() {
       console.error('Error loading templates:', error);
     });
 
-  // PDF Export Functionality
-  document.getElementById('export-pdf').addEventListener('click', function() {
-    if (!currentTemplate) {
-      alert('Please select a template first');
-      return;
+  // PDF EXPORATION LISTENER
+  document.getElementById('export-pdf').addEventListener('click', async function() {
+    const originalElement = document.querySelector('.template-selected[style*="display: block"]') || 
+                          document.querySelector('.template-selected:not([style*="display: none"])');
+    
+    if (!originalElement) {
+        alert('Please select a template to export');
+        return;
     }
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const clone = originalElement.cloneNode(true);
+    prepareForExport(clone);
     
-    doc.setFont(currentTemplate.styles.fontFamily.split(',')[0].trim());
-    doc.setTextColor(currentTemplate.styles.color);
-    
-    const element = document.querySelector('.template-selected');
-    const text = element.innerText;
+    document.body.appendChild(clone);
 
-    doc.text(text, 10, 10);
-    doc.save('resume.pdf');
-  });
+    try {
+        const canvas = await html2canvas(clone, {
+            scale: 2,
+            logging: false,
+            useCORS: true
+        });
+
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm'
+        });
+
+        const imgData = canvas.toDataURL('image/png');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('resume.pdf');
+
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('Failed to generate PDF. Please try again.');
+    } finally {
+        document.body.removeChild(clone);
+    }
 });
+});
+
+function prepareForExport(element) {
+  // Make temporary adjustments for better PDF output
+  element.style.boxShadow = 'none';
+  element.querySelectorAll('input, button').forEach(el => {
+      el.style.border = '1px solid #000';
+      el.style.backgroundColor = 'transparent';
+  });
+  
+  // Convert inputs to read-only text
+  element.querySelectorAll('input').forEach(input => {
+      const text = document.createElement('div');
+      text.textContent = input.value;
+      text.style.minHeight = '20px';
+      input.replaceWith(text);
+  });
+  
+  return element;
+}
+
+function restoreAfterExport(element, original) {
+  // Restore original element
+  original.innerHTML = element.innerHTML;
+}
 
 // Github_data.json generating
 document.getElementById('fetchButton').addEventListener('click', async () => {

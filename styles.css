@@ -63,12 +63,6 @@ button {
     flex: 3;
 }
 
-.template-selected {
-    background-color: white;
-    width: 100%;
-    height: 100%;
-}
-
 .right-column {
     background-color: #e0e0e0; 
     flex: 1;
@@ -120,4 +114,28 @@ button {
 /* Template Three */
 #template_three_place {
     display: none;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .template-selected, .template-selected * {
+        visibility: visible;
+    }
+    .template-selected {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+.template-selected {
+    background-color: white;
+    width: 210mm; /* A4 width */
+    min-height: 297mm; /* A4 height */
+    margin: 0 auto;
+    box-sizing: border-box;
 }
