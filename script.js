@@ -115,20 +115,11 @@ for (let i = 0; i < templateEls.length; i++) {
       templateEls[j].style.border = "solid 4px transparent";
     }
     this.style.border = "solid 4px red";
-    
-    // Store the selected template
-    currentTemplate = templates[i];
-    let styles = currentTemplate.styles;
-
-    templateSelectedEl.style.backgroundColor = styles.backgroundColor;
-    templateSelectedEl.style.color = styles.color;
-    templateSelectedEl.style.fontFamily = styles.fontFamily;
   };
 }
 
 /* Custom Templating */
 buttonCustomization.addEventListener('click', () => {
-  console.log('button clicked');
   for (let i = 0; i < templateEls.length; i++) {
     templateEls[i].style.border = "none";
   }
@@ -352,24 +343,32 @@ buttonTemplateOne.addEventListener('click', () => {
     TemplateOneColumnEl.style.display = 'block';
   }
   const fullNameInputEl = document.getElementById('full_name'); // get the user name
-  const bioInputEl = document.getElementById('bio');      // get the user bio
-  const linkInputEl = document.getElementById('link_section');      // get the user bio
-  const projects = document.getElementById('projects'); // get the user projects
+  const bioInputEl = document.getElementById('bio');            // get the user bio
+  const linkInputEl = document.getElementById('sample_link');   // get the user bio
+  const projects = document.getElementById('projects');         // get the user projects
 
-  // Clear the existing content
   TemplateOneColumnEl.innerHTML = '';
 
-  // Add full name
+  // Full name
   const nameEl = document.createElement('h1');
   nameEl.innerText = fullNameInputEl.value;
   TemplateOneColumnEl.appendChild(nameEl);
 
-  // Add bio
+  // Bio
   const bioEl = document.createElement('p');
   bioEl.innerText = bioInputEl.value;
   TemplateOneColumnEl.appendChild(bioEl);
 
-  // Add projects
+  // Link
+  const linkEl = document.createElement('a');
+  linkEl.href = linkInputEl.href;
+  linkEl.innerText = linkEl.href;
+  TemplateOneColumnEl.appendChild(linkEl);
+
+  // Project
+  const headingProject = document.createElement('h1');
+  headingProject.innerText = "Project";
+  TemplateOneColumnEl.appendChild(headingProject);
   const projectsEl = document.createElement('div');
   projectsEl.classList.add('projects-section');
   Array.from(projects.children).forEach(project => {
@@ -380,19 +379,35 @@ buttonTemplateOne.addEventListener('click', () => {
   });
   TemplateOneColumnEl.appendChild(projectsEl);
 
-  console.log(TemplateOneColumnEl);
+  // Education
+  const educationProject = document.createElement('h1');
+  educationProject.innerText = "Education";
+  TemplateOneColumnEl.appendChild(educationProject);
+  const educationSectionEl = document.getElementById('education');
+  const educations = document.createElement('div');
+  Array.from(educationSectionEl.children).forEach(education => {
+    Array.from(education.children).forEach (educationEntry => {
+
+      if (educationEntry.tagName === 'DIV') {
+        const educationField = document.createElement('div');
+        educationField.innerText = educationEntry.children[1].value;
+        educations.appendChild(educationField);
+      } 
+    })
+  });
+  TemplateOneColumnEl.appendChild(educations);
+    // Get individual fields
+  
 });
 
 /* Template 2 */
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
-  // Clear the existing content
   TemplateOneColumnEl.innerHTML = '';
 });
 
 /* Template 3 */
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
-  // Clear the existing content
   TemplatethreeColumnEl.innerHTML = '';
 });
