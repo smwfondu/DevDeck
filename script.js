@@ -104,81 +104,77 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
-let currentTemplate = null;
+/*---------------Templates Section---------------*/
+let templateEls = document.querySelectorAll(".template");
+var templateSelectedEl = document.querySelector(".template-selected");
+const buttonCustomization = document.getElementById('button_template');
 
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('templates.json')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(templates) {
-      /*---------------Templates Section---------------*/
-      let templateEls = document.querySelectorAll(".template");
-      var templateSelectedEl = document.querySelector(".template-selected");
-
-      for (let i = 0; i < templateEls.length; i++) {
-        templateEls[i].onclick = function() {
-          for (let j = 0; j < templateEls.length; j++) {
-            templateEls[j].style.border = "solid 4px transparent";
-          }
-          this.style.border = "solid 4px red";
-          
-          // Store the selected template
-          currentTemplate = templates[i];
-          let styles = currentTemplate.styles;
-
-          templateSelectedEl.style.backgroundColor = styles.backgroundColor;
-          templateSelectedEl.style.color = styles.color;
-          templateSelectedEl.style.fontFamily = styles.fontFamily;
-        };
-      }
-    })
-    .catch(function(error){
-      console.error('Error loading templates:', error);
-    });
-
-  // PDF EXPORATION LISTENER
-  document.getElementById('export-pdf').addEventListener('click', async function() {
-    const originalElement = document.querySelector('.template-selected[style*="display: block"]') || 
-                          document.querySelector('.template-selected:not([style*="display: none"])');
-    
-    if (!originalElement) {
-        alert('Please select a template to export');
-        return;
+for (let i = 0; i < templateEls.length; i++) {
+  templateEls[i].onclick = function() {
+    for (let j = 0; j < templateEls.length; j++) {
+      templateEls[j].style.border = "solid 4px transparent";
     }
-
-    const clone = originalElement.cloneNode(true);
-    prepareForExport(clone);
+    this.style.border = "solid 4px red";
     
-    document.body.appendChild(clone);
+    // Store the selected template
+    currentTemplate = templates[i];
+    let styles = currentTemplate.styles;
 
-    try {
-        const canvas = await html2canvas(clone, {
-            scale: 2,
-            logging: false,
-            useCORS: true
-        });
+    templateSelectedEl.style.backgroundColor = styles.backgroundColor;
+    templateSelectedEl.style.color = styles.color;
+    templateSelectedEl.style.fontFamily = styles.fontFamily;
+  };
+}
 
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'mm'
-        });
-
-        const imgData = canvas.toDataURL('image/png');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('resume.pdf');
-
-    } catch (error) {
-        console.error('Error generating PDF:', error);
-        alert('Failed to generate PDF. Please try again.');
-    } finally {
-        document.body.removeChild(clone);
-    }
+/* Custom Templating */
+buttonCustomization.addEventListener('click', () => {
+  console.log('button clicked');
+  for (let i = 0; i < templateEls.length; i++) {
+    templateEls[i].style.border = "none";
+  }
 });
+
+// PDF EXPORATION LISTENER
+document.getElementById('export-pdf').addEventListener('click', async function() {
+  const originalElement = document.querySelector('.template-selected[style*="display: block"]') || 
+                        document.querySelector('.template-selected:not([style*="display: none"])');
+  
+  if (!originalElement) {
+      alert('Please select a template to export');
+      return;
+  }
+
+  const clone = originalElement.cloneNode(true);
+  prepareForExport(clone);
+  
+  document.body.appendChild(clone);
+
+  try {
+      const canvas = await html2canvas(clone, {
+          scale: 2,
+          logging: false,
+          useCORS: true
+      });
+
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm'
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('resume.pdf');
+
+  } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+  } finally {
+      document.body.removeChild(clone);
+  }
 });
 
 function prepareForExport(element) {
@@ -337,7 +333,6 @@ const TemplatetwoColumnEl = document.getElementById('template_two_place');
 const TemplatethreeColumnEl = document.getElementById('template_three_place');
 
 /* Customization */
-const buttonCustomization = document.getElementById('button_template');
 buttonCustomization.onclick = function() {
   if (TemplateOneColumnEl) {
     TemplateOneColumnEl.style.display = 'none';
