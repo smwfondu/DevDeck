@@ -336,7 +336,7 @@ buttonCustomization.onclick = function() {
   }
 };
 
-/* Template 1 */
+/*------------------ Template 1 ------------------*/
 const buttonTemplateOne = document.getElementById('template_one');
 buttonTemplateOne.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
