@@ -367,6 +367,7 @@ buttonTemplateOne.addEventListener('click', () => {
   const linkEl = document.createElement('a');
   linkEl.href = linkInputEl.href;
   linkEl.innerText = linkEl.href;
+  linkEl.target = '_blank'; // Open the link in a new tab
   TemplateOneColumnEl.appendChild(linkEl);
 
   // Project
