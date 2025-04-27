@@ -284,7 +284,8 @@ educationButtonEl.addEventListener('click', () => {
     { label: "School Name", id: "school_name", placeholder: "School Name", name: "school_name" },
     { label: "Degree", id: "degree", placeholder: "Degree", name: "degree" },
     { label: "Field of Study", id: "field_of_study", placeholder: "Field of Study", name: "field_of_study" },
-    { label: "Graduation Year", id: "graduation_year", placeholder: "Graduation Year", name: "graduation_year" }
+    { label: "Graduation Year", id: "graduation_year", placeholder: "Graduation Year", name: "graduation_year" },
+    { label: "Location", id: "location", placeholder: "Location", name: "location" }
   ];
 
   fields.forEach(field => {
@@ -353,8 +354,8 @@ buttonTemplateOne.addEventListener('click', () => {
   TemplateOneColumnEl.innerHTML = '';
 
   // Full name
-  const nameEl = document.createElement('h1');
-  nameEl.innerText = fullNameInputEl.value;
+  const nameEl = document.createElement('h3');
+  nameEl.innerText = fullNameInputEl.value.toUpperCase();
   TemplateOneColumnEl.appendChild(nameEl);
 
   // Bio
@@ -371,6 +372,7 @@ buttonTemplateOne.addEventListener('click', () => {
   // Project
   const headingProject = document.createElement('h1');
   headingProject.innerText = "Project";
+  headingProject.style.fontSize = "20px";
   TemplateOneColumnEl.appendChild(headingProject);
   const projectsEl = document.createElement('div');
   projectsEl.classList.add('projects-section');
@@ -385,22 +387,42 @@ buttonTemplateOne.addEventListener('click', () => {
   // Education
   const educationProject = document.createElement('h1');
   educationProject.innerText = "Education";
+  educationProject.style.fontSize = "20px";
   TemplateOneColumnEl.appendChild(educationProject);
   const educationSectionEl = document.getElementById('education');
   const educations = document.createElement('div');
   Array.from(educationSectionEl.children).forEach(education => {
-    Array.from(education.children).forEach (educationEntry => {
+    const schoolName = document.createElement('span');
+    schoolName.innerText = education.children[0].children[1].value;
 
-      if (educationEntry.tagName === 'DIV') {
-        const educationField = document.createElement('div');
-        educationField.innerText = educationEntry.children[1].value;
-        educations.appendChild(educationField);
-      } 
-    })
+    const location = document.createElement('span');
+    location.innerText = education.children[4].children[1].value;
+
+    const degreeAndFieldOfStudy = document.createElement('span');
+
+    degreeAndFieldOfStudy.innerText = ((education.children[1].children[1].value)) + ", " + (education.children[2].children[1].value);
+
+    const graduationYear = document.createElement('span');
+    graduationYear.innerText = education.children[3].children[1].value;
+
+    const educationFirst = document.createElement('p');
+    educationFirst.style.display = 'flex';
+    educationFirst.style.justifyContent = 'space-between';
+    // educationFirst.style.marginBottom = '10px';
+    educationFirst.appendChild(schoolName);
+    educationFirst.appendChild(location);
+
+    const educationSecond = document.createElement('p');
+    educationSecond.style.display = 'flex';
+    educationSecond.style.justifyContent = 'space-between';
+    // educationFirst.style.marginBottom = '10px';
+    educationSecond.appendChild(degreeAndFieldOfStudy);
+    educationSecond.appendChild(graduationYear);
+
+    educations.appendChild(educationFirst);
+    educations.appendChild(educationSecond);
   });
-  TemplateOneColumnEl.appendChild(educations);
-    // Get individual fields
-  
+  TemplateOneColumnEl.appendChild(educations);  
 });
 
 /* Template 2 */
