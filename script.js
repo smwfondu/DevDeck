@@ -457,6 +457,19 @@ buttonTemplateOne.addEventListener('click', () => {
     educations.appendChild(educationSecond);
   });
   TemplateOneColumnEl.appendChild(educations);  
+
+  // Technical Skills
+  const technicalSkills = document.createElement('h1');
+  technicalSkills.style.borderTop = "1px solid black";
+  technicalSkills.style.borderBottom = "1px solid black";
+  technicalSkills.innerText = "Technical Skills";
+  technicalSkills.style.fontSize = "20px";
+  TemplateOneColumnEl.appendChild(technicalSkills);
+
+  const skillsSectionEl = document.getElementById('skills');
+  const skillsDiv = document.createElement('div');
+  skillsDiv.innerText = skillsSectionEl.children[0].value;
+  TemplateOneColumnEl.appendChild(skillsDiv);
 });
 
 /* Template 2 */
