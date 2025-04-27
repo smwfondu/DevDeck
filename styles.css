@@ -47,7 +47,7 @@ header h1 {
 
 button {
     padding: 10px;
-    background-color: #b1abab;
+    /* background-color: #b1abab; */
 }
 
 .template {
@@ -96,6 +96,11 @@ button {
 .button_education {
     margin-top: 5px;
 }
+
+button:hover {
+    background-color: #b1abab;
+}
+
 
 /* Template One */
 #template_one_place {
