@@ -371,6 +371,8 @@ buttonTemplateOne.addEventListener('click', () => {
 
   // Project
   const headingProject = document.createElement('h1');
+  headingProject.style.borderTop = "1px solid black";
+  headingProject.style.borderBottom = "1px solid black";
   headingProject.innerText = "Project";
   headingProject.style.fontSize = "20px";
   TemplateOneColumnEl.appendChild(headingProject);
@@ -386,6 +388,8 @@ buttonTemplateOne.addEventListener('click', () => {
 
   // Education
   const educationProject = document.createElement('h1');
+  educationProject.style.borderTop = "1px solid black";
+  educationProject.style.borderBottom = "1px solid black";
   educationProject.innerText = "Education";
   educationProject.style.fontSize = "20px";
   TemplateOneColumnEl.appendChild(educationProject);
@@ -393,14 +397,14 @@ buttonTemplateOne.addEventListener('click', () => {
   const educations = document.createElement('div');
   Array.from(educationSectionEl.children).forEach(education => {
     const schoolName = document.createElement('span');
-    schoolName.innerText = education.children[0].children[1].value;
+    schoolName.innerHTML = `<b>${education.children[0].children[1].value}</b>`;
 
     const location = document.createElement('span');
     location.innerText = education.children[4].children[1].value;
 
     const degreeAndFieldOfStudy = document.createElement('span');
 
-    degreeAndFieldOfStudy.innerText = ((education.children[1].children[1].value)) + ", " + (education.children[2].children[1].value);
+    degreeAndFieldOfStudy.innerHTML = `<i>${education.children[1].children[1].value}, ${education.children[2].children[1].value}</i>`;
 
     const graduationYear = document.createElement('span');
     graduationYear.innerText = education.children[3].children[1].value;
