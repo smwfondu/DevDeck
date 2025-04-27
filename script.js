@@ -367,6 +367,7 @@ workExperienceButtonEl.addEventListener('click', () => {
 const projectButtonEl = document.getElementById('button_project');
 projectButtonEl.addEventListener('click', () => {
   const projectContainer = document.createElement('div');
+  projectContainer.classList.add('add_project_manual');
 
   // Create the input fields with labels
   const fields = [
