@@ -458,6 +458,25 @@ buttonTemplateOne.addEventListener('click', () => {
   linkEl.innerText = linkEl.href;
   linkEl.target = '_blank'; // Open the link in a new tab
   TemplateOneColumnEl.appendChild(linkEl);
+  // Add more links
+  const linkSectionEl = document.getElementById('link_section');
+  const linksSection = document.createElement('span');
+  // linksSection.style.marginTop = "10px";
+  Array.from(linkSectionEl.children).forEach(linkContainer => {
+    const linkInput = linkContainer.querySelector('input[type="url"]');
+    if (linkInput && linkInput.value.trim()) {
+      const linkEl = document.createElement('a');
+      linkEl.href = linkInput.value.trim();
+      linkEl.innerText = linkInput.value.trim();
+      linkEl.target = '_blank'; // Open the link in a new tab
+      // linkEl.style.display = 'block'; // Display each link on a new line
+      const separator = document.createElement('span');
+      separator.innerText = ' | ';
+      linksSection.appendChild(separator);
+      linksSection.appendChild(linkEl);
+    }
+  });
+  TemplateOneColumnEl.appendChild(linksSection);
 
   // Project
   const headingProject = document.createElement('h1');
