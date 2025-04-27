@@ -474,17 +474,33 @@ buttonTemplateOne.addEventListener('click', () => {
     projectFirst.style.display = 'flex';
     projectFirst.style.justifyContent = 'space-between';
     const projectName = document.createElement('span');
-    projectName.innerHTML = `<b>${project.children[0].innerText}</b>`; // Project Name
+    if (project.className == 'add_project_manual') {
+      projectName.innerHTML = `<b>${project.children[0].children[1].value}</b>`; // Project Name
+
+    } else {
+      projectName.innerHTML = `<b>${project.children[0].innerText}</b>`; // Project Name
+    }
     projectFirst.appendChild(projectName);
     const projectTechnologies = document.createElement('span');
-    projectTechnologies.innerHTML = `<i>${project.children[1].innerText}</i>`;  // Project Technologies
+    if (project.className == 'add_project_manual') {
+      projectTechnologies.innerHTML = `<i>${project.children[1].children[1].value}</i>`;  // Project Technologies
+
+    } else {
+      projectTechnologies.innerHTML = `<i>${project.children[1].innerText}</i>`;  // Project Technologies
+    }
     projectFirst.appendChild(projectTechnologies);
 
     /* Project - Second line */
     const projectSecond = document.createElement('p');
     const projectLink = document.createElement('a');
-    projectLink.innerText = project.children[3].innerText; // Project link
-    projectLink.href = project.children[3].innerText;
+    if (project.className == 'add_project_manual') {
+      projectLink.innerText = project.children[3].children[1].value; // Project link
+      projectLink.href = project.children[3].children[1].value;
+    } else {
+      projectLink.innerText = project.children[3].innerText; // Project link
+      projectLink.href = project.children[3].innerText;
+    }
+
     projectLink.target = '_blank';
     projectSecond.style.textAlign = 'left';
     projectSecond.appendChild(projectLink);
@@ -492,7 +508,12 @@ buttonTemplateOne.addEventListener('click', () => {
     /* Project - Thrid line */
     const projectThird = document.createElement('ul');
     projectThird.style.textAlign = 'left';
-    const descriptionPoints = project.children[2].innerText.split('.').filter(point => point.trim() !== '');
+    let descriptionPoints;
+    if (project.className === 'add_project_manual') {
+      descriptionPoints = project.children[2].children[1].value.split('.').filter(point => point.trim() !== '');
+    } else {
+      descriptionPoints = project.children[2].innerText.split('.').filter(point => point.trim() !== '');
+    }
     descriptionPoints.forEach(point => {
       const listItem = document.createElement('li');
       listItem.innerText = point.trim();
