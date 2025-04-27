@@ -238,6 +238,9 @@ async function fetchGitHubData(username) {
 };
 };
 
+document.style.padding = "30px 40px";
+document.style.margin = "0 auto";
+
 /*--------- Add more links ---------*/
 const linkButtonEl = document.getElementById('button_link');
 linkButtonEl.addEventListener('click', () => {
