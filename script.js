@@ -320,6 +320,98 @@ educationButtonEl.addEventListener('click', () => {
   educationSectionEl.appendChild(educationContainer);
 });
 
+/*--------- Add more work experience section ---------*/
+const workExperienceButtonEl = document.getElementById('button_work_experience');
+workExperienceButtonEl.addEventListener('click', () => {
+  const workExperienceContainer = document.createElement('div');
+  workExperienceContainer.classList.add("work-experience");
+
+  // Create the input fields with labels
+  const fields = [
+    { label: "Company Name", id: "company_name", placeholder: "Company Name", name: "company_name" },
+    { label: "Position", id: "position", placeholder: "Position", name: "position" },
+    { label: "Duration", id: "duration", placeholder: "Duration (e.g., Jan 2020 - Dec 2022)", name: "duration" },
+    { label: "Location", id: "location", placeholder: "Location", name: "location" },
+    { label: "Description", id: "description", placeholder: "Description (e.g., Achievements, Responsibilities)", name: "description" }
+  ];
+
+  fields.forEach(field => {
+    const entryDiv = document.createElement('div');
+    entryDiv.classList.add('work-experience-entry');
+
+    const label = document.createElement('label');
+    label.setAttribute('for', field.id);
+    label.innerText = field.label;
+
+    const input = document.createElement(field.id === "description" ? 'textarea' : 'input');
+    input.id = field.id;
+    input.type = "text";
+    input.placeholder = field.placeholder;
+    input.name = field.name;
+
+    entryDiv.appendChild(label);
+    entryDiv.appendChild(input);
+    workExperienceContainer.appendChild(entryDiv);
+  });
+
+  const workExperienceSectionEl = document.getElementById('work_experience');
+
+  const removeButton = document.createElement('button'); // Remove button
+  removeButton.innerText = "Remove";
+  removeButton.style.marginTop = "20px";
+  removeButton.addEventListener('click', () => {
+    workExperienceContainer.remove();
+  });
+  workExperienceContainer.appendChild(removeButton);
+
+  workExperienceSectionEl.appendChild(workExperienceContainer);
+});
+
+/*--------- Add more projects section ---------*/
+const projectButtonEl = document.getElementById('button_project');
+projectButtonEl.addEventListener('click', () => {
+  const projectContainer = document.createElement('div');
+
+  // Create the input fields with labels
+  const fields = [
+    { label: "Project Name", id: "project_name", placeholder: "Project Name", name: "project_name" },
+    { label: "Technologies Used", id: "technologies_used", placeholder: "Technologies Used", name: "technologies_used" },
+    { label: "Description", id: "description", placeholder: "Description (e.g., Features, Achievements)", name: "description" },
+    { label: "Project Link", id: "project_link", placeholder: "Project Link", name: "project_link" }
+  ];
+
+  fields.forEach(field => {
+    const entryDiv = document.createElement('div');
+    entryDiv.classList.add('project-entry');
+
+    const label = document.createElement('label');
+    label.setAttribute('for', field.id);
+    label.innerText = field.label;
+
+    const input = document.createElement(field.id === "description" ? 'textarea' : 'input');
+    input.id = field.id;
+    input.type = "text";
+    input.placeholder = field.placeholder;
+    input.name = field.name;
+
+    entryDiv.appendChild(label);
+    entryDiv.appendChild(input);
+    projectContainer.appendChild(entryDiv);
+  });
+
+  const projectSectionEl = document.getElementById('projects');
+
+  const removeButton = document.createElement('button'); // Remove button
+  removeButton.innerText = "Remove";
+  removeButton.style.marginTop = "10px";
+  removeButton.addEventListener('click', () => {
+    projectContainer.remove();
+  });
+  projectContainer.appendChild(removeButton);
+
+  projectSectionEl.appendChild(projectContainer);
+});
+
 /* Applying templates to the resume */
 const CustomColumnEl = document.getElementById('custom_template');
 const TemplateOneColumnEl = document.getElementById('template_one_place');
@@ -461,7 +553,61 @@ buttonTemplateOne.addEventListener('click', () => {
     educations.appendChild(educationFirst);
     educations.appendChild(educationSecond);
   });
-  TemplateOneColumnEl.appendChild(educations);  
+  if (educations.innerText.trim()) {
+    TemplateOneColumnEl.appendChild(educations);
+  }
+
+  // Work Experience
+  const workExperienceHeading = document.createElement('h1');
+  workExperienceHeading.style.borderTop = "1px solid black";
+  workExperienceHeading.style.borderBottom = "1px solid black";
+  workExperienceHeading.innerText = "Work Experience";
+  workExperienceHeading.style.fontSize = "20px";
+  TemplateOneColumnEl.appendChild(workExperienceHeading);
+
+  const workExperienceSectionEl = document.getElementById('work_experience');
+  const workExperiences = document.createElement('div');
+  Array.from(workExperienceSectionEl.children).forEach(workExperience => {
+    const companyName = document.createElement('span');
+    companyName.innerHTML = `<b>${workExperience.children[0].children[1].value}</b>`;
+
+    const location = document.createElement('span');
+    location.innerText = workExperience.children[3].children[1].value;
+
+    const position = document.createElement('span');
+    position.innerHTML = `<i>${workExperience.children[1].children[1].value}</i>`;
+
+    const duration = document.createElement('span');
+    duration.innerText = workExperience.children[2].children[1].value;
+
+    const workExperienceFirst = document.createElement('p');
+    workExperienceFirst.style.display = 'flex';
+    workExperienceFirst.style.justifyContent = 'space-between';
+    workExperienceFirst.appendChild(companyName);
+    workExperienceFirst.appendChild(location);
+
+    const workExperienceSecond = document.createElement('p');
+    workExperienceSecond.style.display = 'flex';
+    workExperienceSecond.style.justifyContent = 'space-between';
+    workExperienceSecond.appendChild(position);
+    workExperienceSecond.appendChild(duration);
+
+    const workExperienceThird = document.createElement('ul');
+    workExperienceThird.style.textAlign = 'left';
+    const descriptionPoints = workExperience.children[4].children[1].value.split('.').filter(point => point.trim() !== '');
+    descriptionPoints.forEach(point => {
+      const listItem = document.createElement('li');
+      listItem.innerText = point.trim();
+      workExperienceThird.appendChild(listItem);
+    });
+
+    workExperiences.appendChild(workExperienceFirst);
+    workExperiences.appendChild(workExperienceSecond);
+    workExperiences.appendChild(workExperienceThird);
+  });
+  if (workExperiences.innerText.trim()) {
+    TemplateOneColumnEl.appendChild(workExperiences);
+  }
 
   // Technical Skills
   const technicalSkills = document.createElement('h1');
