@@ -380,10 +380,39 @@ buttonTemplateOne.addEventListener('click', () => {
   const projectsEl = document.createElement('div');
   projectsEl.classList.add('projects-section');
   Array.from(projects.children).forEach(project => {
-    const projectEl = document.createElement('div');
-    projectEl.classList.add('project-item');
-    projectEl.innerHTML = project.innerHTML; // Copy the project content
-    projectsEl.appendChild(projectEl);
+    /* Project - First line */
+    const projectFirst = document.createElement('p');
+    projectFirst.style.display = 'flex';
+    projectFirst.style.justifyContent = 'space-between';
+    const projectName = document.createElement('span');
+    projectName.innerHTML = `<b>${project.children[0].innerText}</b>`; // Project Name
+    projectFirst.appendChild(projectName);
+    const projectTechnologies = document.createElement('span');
+    projectTechnologies.innerHTML = `<i>${project.children[1].innerText}</i>`;  // Project Technologies
+    projectFirst.appendChild(projectTechnologies);
+
+    /* Project - Second line */
+    const projectSecond = document.createElement('p');
+    const projectLink = document.createElement('a');
+    projectLink.innerText = project.children[3].innerText; // Project link
+    projectLink.href = project.children[3].innerText;
+    projectLink.target = '_blank';
+    projectSecond.style.textAlign = 'left';
+    projectSecond.appendChild(projectLink);
+    
+    /* Project - Thrid line */
+    const projectThird = document.createElement('ul');
+    projectThird.style.textAlign = 'left';
+    const descriptionPoints = project.children[2].innerText.split('.').filter(point => point.trim() !== '');
+    descriptionPoints.forEach(point => {
+      const listItem = document.createElement('li');
+      listItem.innerText = point.trim();
+      projectThird.appendChild(listItem);
+    });
+
+    projectsEl.appendChild(projectFirst);
+    projectsEl.appendChild(projectSecond);
+    projectsEl.appendChild(projectThird);
   });
   TemplateOneColumnEl.appendChild(projectsEl);
 
