@@ -437,7 +437,7 @@ buttonTemplateOne.addEventListener('click', () => {
     Array.from(education.querySelectorAll('input')).forEach(input => {
       const value = input.value.trim();
       if (value) {
-    degreeAndFieldOfStudy.innerHTML = `<i>${education.children[1].children[1].value}, ${education.children[2].children[1].value}</i>`;
+        degreeAndFieldOfStudy.innerHTML = `<i>${education.children[1].children[1].value}, ${education.children[2].children[1].value}</i>`;
 
       }
     });
