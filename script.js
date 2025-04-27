@@ -159,6 +159,8 @@ document.getElementById('export-pdf').addEventListener('click', async function()
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
+      title = `${document.getElementById('full_name').value}'s Resume`
+
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save('resume.pdf');
 
@@ -189,12 +191,6 @@ function prepareForExport(element) {
   return element;
 }
 
-function restoreAfterExport(element, original) {
-  // Restore original element
-  original.innerHTML = element.innerHTML;
-}
-
-// Github_data.json generating
 document.getElementById('fetchButton').addEventListener('click', async () => {
   const username = document.getElementById('link').value.trim();
   if (!username) {
@@ -415,8 +411,8 @@ projectButtonEl.addEventListener('click', () => {
 /* Applying templates to the resume */
 const CustomColumnEl = document.getElementById('custom_template');
 const TemplateOneColumnEl = document.getElementById('template_one_place');
-const TemplatetwoColumnEl = document.getElementById('template_two_place');
-const TemplatethreeColumnEl = document.getElementById('template_three_place');
+const TemplateTwoColumnEl = document.getElementById('template_two_place');
+const TemplateThreeColumnEl = document.getElementById('template_three_place');
 
 /* Customization */
 buttonCustomization.onclick = function() {
@@ -621,18 +617,27 @@ buttonTemplateOne.addEventListener('click', () => {
   const skillsDiv = document.createElement('div');
   skillsDiv.innerText = skillsSectionEl.children[0].value;
   TemplateOneColumnEl.appendChild(skillsDiv);
+
+  TemplateOneColumnEl.style.padding = "30px 40px";
+  TemplateOneColumnEl.style.margin = "0 auto";
 });
 
 /* Template 2 */
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
-  TemplateOneColumnEl.innerHTML = '';
+  TemplateTwoColumnEl.innerHTML = '';
+
+  TemplateTwoColumnEl.style.padding = "30px 40px";
+  TemplateTwoColumnEl.style.margin = "0 auto";
 });
 
 /* Template 3 */
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
-  TemplatethreeColumnEl.innerHTML = '';
+  TemplateThreeColumnEl.innerHTML = '';
+
+  TemplateThreeColumnEl.style.padding = "30px 40px";
+  TemplateThreeColumnEl.style.margin = "0 auto";
 });
