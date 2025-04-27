@@ -123,6 +123,8 @@ buttonCustomization.addEventListener('click', () => {
   for (let i = 0; i < templateEls.length; i++) {
     templateEls[i].style.border = "none";
   }
+  buttonCustomization.style.backgroundColor = "black";
+  buttonCustomization.style.color = "white";
 });
 
 // PDF EXPORATION LISTENER
@@ -336,6 +338,7 @@ buttonCustomization.onclick = function() {
 /* Template 1 */
 const buttonTemplateOne = document.getElementById('template_one');
 buttonTemplateOne.addEventListener('click', () => {
+  buttonCustomization.removeAttribute('style');
   if (CustomColumnEl) {
     CustomColumnEl.style.display = 'none';
   }
@@ -403,11 +406,13 @@ buttonTemplateOne.addEventListener('click', () => {
 /* Template 2 */
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
+  buttonCustomization.removeAttribute('style');
   TemplateOneColumnEl.innerHTML = '';
 });
 
 /* Template 3 */
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
+  buttonCustomization.removeAttribute('style');
   TemplatethreeColumnEl.innerHTML = '';
 });
