@@ -525,7 +525,9 @@ buttonTemplateOne.addEventListener('click', () => {
     } else {
       projectTechnologies.innerHTML = `<i>${project.children[1].innerText}</i>`;  // Project Technologies
     }
-    projectFirst.appendChild(projectTechnologies);
+    if (projectTechnologies.innerText.trim() !== 'Not specified') {               // Not Technologies specified
+      projectFirst.appendChild(projectTechnologies);
+    }
 
     /* Project - Second line */
     const projectSecond = document.createElement('p');
