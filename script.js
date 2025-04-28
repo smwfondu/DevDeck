@@ -193,6 +193,7 @@ function prepareForExport(element) {
 document.getElementById('fetchButton').addEventListener('click', async () => {
   const username = document.getElementById('link').value.trim();
   console.log('FetchButton Clicked!');
+  console.log('Username is:', username);
   if (!username) {
       alert('Please enter a GitHub username');
       return;
