@@ -162,7 +162,7 @@ document.getElementById('export-pdf').addEventListener('click', async function()
       title = `${document.getElementById('full_name').value}'s Resume`
 
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('resume.pdf');
+      pdf.save(title);
 
   } catch (error) {
       console.error('Error generating PDF:', error);
@@ -216,8 +216,6 @@ async function fetchGitHubData(username) {
   const response = await fetch(url, {
       headers: {
           'Accept': 'application/vnd.github.v3+json',
-          // If you need authentication (higher rate limits):
-          // 'Authorization': 'token YOUR_GITHUB_TOKEN'
       }
   })
 
