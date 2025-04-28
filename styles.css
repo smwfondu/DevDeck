@@ -61,6 +61,7 @@ button {
 .middle-column {
     background-color: #f4f4f4;
     flex: 3;
+    margin: 0 auto;
 }
 
 .right-column {
