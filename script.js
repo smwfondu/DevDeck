@@ -2,106 +2,105 @@ const githubProjectsEl = document.getElementById('github-projects');
 
 /*---------------GitHub Project---------------*/
 document.addEventListener('DOMContentLoaded', function(){
-  fetch('github_data.json')  //  Fetch the data from .json file
-  .then(function(response) {          //  Convert the data to JS object
-    return response.json();
-  })
-    .then(function(user){
-      const printProjectEl = document.getElementById('projects');
-      const displayProjectEl = document.getElementById('to_display_project');
-      
-      user.repositories.forEach((repo, index) => {
+  const storedData = localStorage.getItem('github_data');
+  
+  if (storedData) {
+    // Process the data directly since it's already a JSON object
+    const user = JSON.parse(storedData);
+    const printProjectEl = document.getElementById('projects');
+    const displayProjectEl = document.getElementById('to_display_project');
+    
+    user.repositories.forEach((repo, index) => {
 
-        /* User "GitHub projects" section */
-        const project = document.createElement('div');
-        project.innerText = repo.repo_name;
-        const addProjectInputEl = document.createElement('input');
-        addProjectInputEl.type = "checkbox";
-        addProjectInputEl.id = "myCheckbox" + index;
-        addProjectInputEl.name = "myCheckbox";
-        addProjectInputEl.value = "checked";
-        const addProjectLabelEl = document.createElement('label');
-        addProjectLabelEl.for = "myCheckbox" + index;
-        project.appendChild(addProjectInputEl);
-        project.appendChild(addProjectLabelEl);
-        project.classList.add('project');
-        githubProjectsEl.appendChild(project);
+      /* User "GitHub projects" section */
+      const project = document.createElement('div');
+      project.innerText = repo.repo_name;
+      const addProjectInputEl = document.createElement('input');
+      addProjectInputEl.type = "checkbox";
+      addProjectInputEl.id = "myCheckbox" + index;
+      addProjectInputEl.name = "myCheckbox";
+      addProjectInputEl.value = "checked";
+      const addProjectLabelEl = document.createElement('label');
+      addProjectLabelEl.for = "myCheckbox" + index;
+      project.appendChild(addProjectInputEl);
+      project.appendChild(addProjectLabelEl);
+      project.classList.add('project');
+      githubProjectsEl.appendChild(project);
 
-        const checkbox = document.getElementById(project.children[0].id);
+      const checkbox = document.getElementById(project.children[0].id);
 
-        project.addEventListener('click', function() { // Highlight the project the user selects
-          document.querySelectorAll('.project').forEach(el => {
-            el.style.border = 'solid 4px transparent';
-          });
-          this.style.border = '4px solid red';
-
-          if (!checkbox.checked) {  // Preview the project on the resume before adding
-            displayProjectEl.innerHTML = `
-                <div>${repo.repo_name}</div>
-                <div>${repo.language}</div>
-                <div>${repo.description}</div>
-                <div>${repo.link}</div>
-              `;
-          } else {                  // Don't preview the project if already added on the resume
-            displayProjectEl.innerHTML = '';
-          }
-
+      project.addEventListener('click', function() { // Highlight the project the user selects
+        document.querySelectorAll('.project').forEach(el => {
+          el.style.border = 'solid 4px transparent';
         });
+        this.style.border = '4px solid red';
 
-        /* Display user projects on the resume */
-        checkbox.addEventListener('change', function(event) {
-          if (event.target.checked) {
-            let alreadyExists = false; // Flag to track if the project already exists
-            // Check if the project already exists in the projects div
-            for (let j = 0; j < printProjectEl.children.length; j++) {
-              if (printProjectEl.children[j].id === repo.repo_name) {
-                alreadyExists = true;
-                break; // No need to continue checking if found
-              }
-            }
-            // If the project doesn't exist, create and append it
-            if (!alreadyExists) {
-              const projectFinalEl = document.createElement('div');
+        if (!checkbox.checked) {  // Preview the project on the resume before adding
+          displayProjectEl.innerHTML = `
+              <div>${repo.repo_name}</div>
+              <div>${repo.language}</div>
+              <div>${repo.description}</div>
+              <div>${repo.link}</div>
+            `;
+        } else {                  // Don't preview the project if already added on the resume
+          displayProjectEl.innerHTML = '';
+        }
 
-              /* Add information to the project */
-              const projectNameEl = document.createElement('div');          //  project name
-              projectNameEl.innerText = repo.repo_name;
-              projectFinalEl.appendChild(projectNameEl);
-              const projectLanguagesEl = document.createElement('div');     //  project programming languages
-              projectLanguagesEl.innerText = repo.language;
-              projectFinalEl.appendChild(projectLanguagesEl);
-              const projectDescriptionEl = document.createElement('div');   //  project description
-              projectDescriptionEl.innerText = repo.description;
-              projectFinalEl.appendChild(projectDescriptionEl);
-              const projectLinkEl = document.createElement('div');          //  project link
-              projectLinkEl.innerText = repo.link;
-              projectFinalEl.appendChild(projectLinkEl);
-
-              projectFinalEl.id = repo.repo_name;
-              printProjectEl.appendChild(projectFinalEl);
-            }
-          } else {
-            let alreadyExists = false; // Flag to track if the project already exists
-            // Check if the project already exists in the projects div
-            for (let j = 0; j < printProjectEl.children.length; j++) {
-              if (printProjectEl.children[j].id === repo.repo_name) {
-                alreadyExists = true;
-                break; // No need to continue checking if found
-              }
-            }
-            // If the project doesn't exist, create and append it
-            if (alreadyExists) {
-              const childToRemove = document.getElementById(repo.repo_name);
-              printProjectEl.removeChild(childToRemove);
-            }
-          }
-        });
       });
-    })
-  .catch(function(error) { // Check erros in parsing the user data
+
+      /* Display user projects on the resume */
+      checkbox.addEventListener('change', function(event) {
+        if (event.target.checked) {
+          let alreadyExists = false; // Flag to track if the project already exists
+          // Check if the project already exists in the projects div
+          for (let j = 0; j < printProjectEl.children.length; j++) {
+            if (printProjectEl.children[j].id === repo.repo_name) {
+              alreadyExists = true;
+              break; // No need to continue checking if found
+            }
+          }
+          // If the project doesn't exist, create and append it
+          if (!alreadyExists) {
+            const projectFinalEl = document.createElement('div');
+
+            /* Add information to the project */
+            const projectNameEl = document.createElement('div');          //  project name
+            projectNameEl.innerText = repo.repo_name;
+            projectFinalEl.appendChild(projectNameEl);
+            const projectLanguagesEl = document.createElement('div');     //  project programming languages
+            projectLanguagesEl.innerText = repo.language;
+            projectFinalEl.appendChild(projectLanguagesEl);
+            const projectDescriptionEl = document.createElement('div');   //  project description
+            projectDescriptionEl.innerText = repo.description;
+            projectFinalEl.appendChild(projectDescriptionEl);
+            const projectLinkEl = document.createElement('div');          //  project link
+            projectLinkEl.innerText = repo.link;
+            projectFinalEl.appendChild(projectLinkEl);
+
+            projectFinalEl.id = repo.repo_name;
+            printProjectEl.appendChild(projectFinalEl);
+          }
+        } else {
+          let alreadyExists = false; // Flag to track if the project already exists
+          // Check if the project already exists in the projects div
+          for (let j = 0; j < printProjectEl.children.length; j++) {
+            if (printProjectEl.children[j].id === repo.repo_name) {
+              alreadyExists = true;
+              break; // No need to continue checking if found
+            }
+          }
+          // If the project doesn't exist, create and append it
+          if (alreadyExists) {
+            const childToRemove = document.getElementById(repo.repo_name);
+            printProjectEl.removeChild(childToRemove);
+          }
+        }
+      });
+    });
+  } else {
     githubProjectsEl.innerText = "No projects are available";
-    console.log('Error loading templates:', error);
-  });
+    console.log('Error loading templates:', 'No GitHub data found in localStorage');
+  }
 });
 
 /*---------------Templates Section---------------*/
