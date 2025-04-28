@@ -115,10 +115,18 @@ button:hover {
 #template_two_place {
     display: none;
 }
+.template_two_selected {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
 
 /* Template Three */
 #template_three_place {
     display: none;
+}
+.template_two_selected {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
 }
 
 @media print {
