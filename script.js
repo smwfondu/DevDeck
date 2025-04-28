@@ -453,9 +453,16 @@ buttonTemplateOne.addEventListener('click', () => {
   TemplateOneColumnEl.appendChild(bioEl);
 
   // Link
+  const githubLinkEl = document.getElementById('link');
   const linkEl = document.createElement('a');
-  linkEl.href = linkInputEl.href;
-  linkEl.innerText = linkEl.href;
+  if (githubLinkEl.value !== ''){
+    let userGithubAccount = ('https://github.com/' + String(githubLinkEl.value));
+    linkEl.href = userGithubAccount;
+    linkEl.innerText = userGithubAccount;
+  } else {
+    linkEl.href = linkInputEl.href;
+    linkEl.innerText = linkEl.href;
+  }
   linkEl.target = '_blank'; // Open the link in a new tab
   TemplateOneColumnEl.appendChild(linkEl);
   // Add more links
