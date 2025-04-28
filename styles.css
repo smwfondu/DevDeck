@@ -153,3 +153,7 @@ button:hover {
     margin: 0 auto;
     box-sizing: border-box;
 }
+
+#custom_template {
+    padding: 30px;    
+}
