@@ -251,7 +251,6 @@ linkButtonEl.addEventListener('click', () => {
 
   const linkInput = document.createElement('input');
   linkInput.type = 'url';
-  linkInput.id = 'link';
   linkInput.name = 'link';
   linkInput.placeholder = 'Enter a URL';
 
