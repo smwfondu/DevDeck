@@ -201,13 +201,10 @@ document.getElementById('fetchButton').addEventListener('click', async () => {
   try {
     const data = await fetchGitHubData(username);
     console.log(data);
-    const fs = require('fs')
-    fs.writeFile("github_data.json", data)
-    //document.getElementById('github-projects').textContent = JSON.stringify(data, null, 2);
-    // You can also process this data further for your resume builder
+    
+    localStorage.setItem('github_data', JSON.stringify(data));
   } catch (error) {
     console.error('Error fetching github data:', error);
-    //document.getElementById('output').textContent = 'Error fetching data: ' + error.message;
   }
 });
 
@@ -233,7 +230,7 @@ async function fetchGitHubData(username) {
           description: repo.description,
           link: repo.html_url
       }))
-};
+  };
 };
 
 /*--------- Add more links ---------*/
