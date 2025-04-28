@@ -419,6 +419,12 @@ buttonCustomization.onclick = function() {
   if (TemplateOneColumnEl) {
     TemplateOneColumnEl.style.display = 'none';
   }
+  if (TemplateTwoColumnEl) {
+    TemplateOneColumnEl.style.display = 'none';
+  }
+  if (TemplateOneColumnEl) {
+    TemplateThreeColumnEl.style.display = 'none';
+  }
   if (CustomColumnEl) {
     CustomColumnEl.style.display = 'block';
   }
