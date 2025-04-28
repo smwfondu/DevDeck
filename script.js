@@ -431,6 +431,12 @@ buttonTemplateOne.addEventListener('click', () => {
   if (CustomColumnEl) {
     CustomColumnEl.style.display = 'none';
   }
+  if (TemplateTwoColumnEl) {
+    TemplateTwoColumnEl.style.display = 'none';
+  }
+  if (TemplateThreeColumnEl) {
+    TemplateThreeColumnEl.style.display = 'none';
+  }
   if (TemplateOneColumnEl) {
     TemplateOneColumnEl.style.display = 'block';
   }
@@ -672,19 +678,43 @@ buttonTemplateOne.addEventListener('click', () => {
 /* Template 2 */
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
-  buttonCustomization.removeAttribute('style');
-  TemplateTwoColumnEl.innerHTML = '';
+  // buttonCustomization.removeAttribute('style');
+  // TemplateTwoColumnEl.innerHTML = '';
 
-  TemplateTwoColumnEl.style.padding = "30px 40px";
-  TemplateTwoColumnEl.style.margin = "0 auto";
+  // TemplateTwoColumnEl.style.padding = "30px 40px";
+  // TemplateTwoColumnEl.style.margin = "0 auto";
+  if (CustomColumnEl) {
+    CustomColumnEl.style.display = 'none';
+  }
+  if (TemplateOneColumnEl) {
+    TemplateOneColumnEl.style.display = 'none';
+  }
+  if (TemplateThreeColumnEl) {
+    TemplateThreeColumnEl.style.display = 'none';
+  }
+  if (TemplateTwoColumnEl) {
+    TemplateTwoColumnEl.style.display = 'block';
+  }
 });
 
 /* Template 3 */
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
-  buttonCustomization.removeAttribute('style');
-  TemplateThreeColumnEl.innerHTML = '';
+  if (CustomColumnEl) {
+    CustomColumnEl.style.display = 'none';
+  }
+  if (TemplateOneColumnEl) {
+    TemplateOneColumnEl.style.display = 'none';
+  }
+  if (TemplateTwoColumnEl) {
+    TemplateTwoColumnEl.style.display = 'none';
+  }
+  if (TemplateThreeColumnEl) {
+    TemplateThreeColumnEl.style.display = 'block';
+  }
+  // buttonCustomization.removeAttribute('style');
+  // TemplateThreeColumnEl.innerHTML = '';
 
-  TemplateThreeColumnEl.style.padding = "30px 40px";
-  TemplateThreeColumnEl.style.margin = "0 auto";
+  // TemplateThreeColumnEl.style.padding = "30px 40px";
+  // TemplateThreeColumnEl.style.margin = "0 auto";
 });
