@@ -795,7 +795,6 @@ buttonTemplateTwo.addEventListener('click', () => {
 
     projectLink.target = '_blank';
     projectSecond.style.textAlign = 'left';
-    projectLinkSpan.innerHTML = "<b>Link: </b> ";
     projectLinkSpan.appendChild(projectLink);
     projectSecond.appendChild(projectLinkSpan);
     
@@ -829,7 +828,7 @@ buttonTemplateTwo.addEventListener('click', () => {
   const educations = document.createElement('div');
   Array.from(educationSectionEl.children).forEach(education => {
     const schoolName = document.createElement('span');
-    schoolName.innerHTML = `<b>${education.children[0].children[1].value}</b>`;
+    schoolName.innerHTML = `<i>${education.children[0].children[1].value}</i>`;
 
     const location = document.createElement('span');
     location.innerText = education.children[4].children[1].value;
@@ -839,8 +838,7 @@ buttonTemplateTwo.addEventListener('click', () => {
     Array.from(education.querySelectorAll('input')).forEach(input => {
       const value = input.value.trim();
       if (value) {
-        degreeAndFieldOfStudy.innerHTML = `<i>${education.children[1].children[1].value}, ${education.children[2].children[1].value}</i>`;
-
+        degreeAndFieldOfStudy.innerHTML = education.children[1].children[1].value + ", " +  education.children[2].children[1].value;
       }
     });
     const graduationYear = document.createElement('span');
@@ -877,13 +875,13 @@ buttonTemplateTwo.addEventListener('click', () => {
   const workExperiences = document.createElement('div');
   Array.from(workExperienceSectionEl.children).forEach(workExperience => {
     const companyName = document.createElement('span');
-    companyName.innerHTML = `<b>${workExperience.children[0].children[1].value}</b>`;
+    companyName.innerHTML = `<i>${workExperience.children[0].children[1].value}</i>`;
 
     const location = document.createElement('span');
     location.innerText = workExperience.children[3].children[1].value;
 
     const position = document.createElement('span');
-    position.innerHTML = `<i>${workExperience.children[1].children[1].value}</i>`;
+    position.innerHTML = workExperience.children[1].children[1].value;
 
     const duration = document.createElement('span');
     duration.innerText = workExperience.children[2].children[1].value;
