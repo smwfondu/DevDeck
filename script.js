@@ -420,9 +420,9 @@ buttonCustomization.onclick = function() {
     TemplateOneColumnEl.style.display = 'none';
   }
   if (TemplateTwoColumnEl) {
-    TemplateOneColumnEl.style.display = 'none';
+    TemplateTwoColumnEl.style.display = 'none';
   }
-  if (TemplateOneColumnEl) {
+  if (TemplateThreeColumnEl) {
     TemplateThreeColumnEl.style.display = 'none';
   }
   if (CustomColumnEl) {
