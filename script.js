@@ -13,7 +13,7 @@ const TemplateTwoColumnEl = document.getElementById('template_two_place');
 const TemplateThreeColumnEl = document.getElementById('template_three_place');
 let templateEls = document.querySelectorAll(".template");
 
-/*---------------GitHub Project---------------*/
+/* --------------- Display Available GitHub Projects --------------- */
 document.addEventListener('DOMContentLoaded', function(){
   const storedData = localStorage.getItem('github_data');
   
@@ -148,9 +148,8 @@ function displayGitHubProjects(user) {
   });
 }
 
-/*---------------Templates Section---------------*/
+/* --------------- Highlight GitHub Projects Selection --------------- */
 const buttonCustomization = document.getElementById('button_template');
-
 for (let i = 0; i < templateEls.length; i++) {
   templateEls[i].onclick = function() {
     for (let j = 0; j < templateEls.length; j++) {
@@ -160,7 +159,7 @@ for (let i = 0; i < templateEls.length; i++) {
   };
 }
 
-/* Custom Templating */
+/* --------------- Highlight Custom Template Selection --------------- */
 buttonCustomization.addEventListener('click', () => {
   for (let i = 0; i < templateEls.length; i++) {
     templateEls[i].style.border = "none";
