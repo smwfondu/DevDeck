@@ -1,9 +1,12 @@
 import { applyTemplateOne } from './Templates/template1.js';
 import { applyTemplateTwo } from './Templates/template2.js';
 import { applyTemplateThree } from './Templates/template3.js';
+import { addWorkExperience } from './Sections/work_experience.js';
+import { addEducation } from './Sections/education.js';
+import { addProject } from './Sections/project.js';
+import { addLink } from './Sections/link.js';
 
 const githubProjectsEl = document.getElementById('github-projects');
-/* Applying templates to the resume */
 const CustomColumnEl = document.getElementById('custom_template');
 const TemplateOneColumnEl = document.getElementById('template_one_place');
 const TemplateTwoColumnEl = document.getElementById('template_two_place');
@@ -278,184 +281,31 @@ async function fetchGitHubData(username) {
   };
 };
 
-/*--------- Add more links ---------*/
+/* ------------------ Links (Section) ------------------ */
 const linkButtonEl = document.getElementById('button_link');
 linkButtonEl.addEventListener('click', () => {
-  const linkSectionEl = document.getElementById('link_section');
-  const linkContainer = document.createElement('div');
-  linkContainer.style.marginTop = "5px";
-
-  const linkLabel = document.createElement('label');
-  linkLabel.setAttribute('for', 'link');
-  linkLabel.innerText = 'Link:';
-
-  const linkInput = document.createElement('input');
-  linkInput.type = 'url';
-  linkInput.name = 'link';
-  linkInput.placeholder = 'Enter a URL';
-
-  const removeButton = document.createElement('button');
-  removeButton.innerText = 'Remove';
-  removeButton.style.marginLeft = '10px';
-  removeButton.addEventListener('click', () => {
-    linkContainer.remove();
-  });
-
-  linkContainer.appendChild(linkLabel);
-  linkContainer.appendChild(linkInput);
-  linkContainer.appendChild(removeButton);
-
-  linkSectionEl.appendChild(linkContainer);
+  addLink();
 });
 
-/*--------- Add more education section ---------*/
+/* ------------------ Education (Section) ------------------ */
 const educationButtonEl = document.getElementById('button_education');
 educationButtonEl.addEventListener('click', () => {
-  const educationContainer = document.createElement('div');
-  educationContainer.classList.add("education");
-
-  // Create the first input element with a label
-  const fields = [
-    { label: "School Name", id: "school_name", placeholder: "School Name", name: "school_name" },
-    { label: "Degree", id: "degree", placeholder: "Degree", name: "degree" },
-    { label: "Field of Study", id: "field_of_study", placeholder: "Field of Study", name: "field_of_study" },
-    { label: "Graduation Year", id: "graduation_year", placeholder: "Graduation Year", name: "graduation_year" },
-    { label: "Location", id: "location", placeholder: "Location", name: "location" }
-  ];
-
-  fields.forEach(field => {
-    const entryDiv = document.createElement('div');
-    entryDiv.classList.add('education-entry');
-
-    const label = document.createElement('label');
-    label.setAttribute('for', field.id);
-    label.innerText = field.label;
-
-    const input = document.createElement('input');
-    input.id = field.id;
-    input.type = "text";
-    input.placeholder = field.placeholder;
-    input.name = field.name;
-
-    entryDiv.appendChild(label);
-    entryDiv.appendChild(input);
-    educationContainer.appendChild(entryDiv);
-  });
-
-  const educationSectionEl = document.getElementById('education');
-
-  const removeButton = document.createElement('button'); // Remove button
-  removeButton.innerText = "Remove";
-  removeButton.style.marginLeft = "10px";
-  removeButton.addEventListener('click', () => {
-    educationContainer.remove();
-  });
-  educationContainer.appendChild(removeButton);
-
-  educationSectionEl.appendChild(educationContainer);
+  addEducation();
 });
 
-/*--------- Add more work experience section ---------*/
+/* ------------------ Work Experience (Section) ------------------ */
 const workExperienceButtonEl = document.getElementById('button_work_experience');
 workExperienceButtonEl.addEventListener('click', () => {
-  const workExperienceContainer = document.createElement('div');
-  workExperienceContainer.classList.add("work-experience");
-
-  // Create the input fields with labels
-  const fields = [
-    { label: "Company Name", id: "company_name", placeholder: "Company Name", name: "company_name" },
-    { label: "Position", id: "position", placeholder: "Position", name: "position" },
-    { label: "Duration", id: "duration", placeholder: "Duration (e.g., Jan 2020 - Dec 2022)", name: "duration" },
-    { label: "Location", id: "location", placeholder: "Location", name: "location" },
-    { label: "Description", id: "description", placeholder: "Description (e.g., Achievements, Responsibilities)", name: "description" }
-  ];
-
-  fields.forEach(field => {
-    const entryDiv = document.createElement('div');
-    entryDiv.classList.add('work-experience-entry');
-
-    const label = document.createElement('label');
-    label.setAttribute('for', field.id);
-    label.innerText = field.label;
-
-    const input = document.createElement(field.id === "description" ? 'textarea' : 'input');
-    input.id = field.id;
-    if (input.tagName.toLowerCase() === 'input') {
-      input.type = 'text';
-    } else if (input.tagName.toLowerCase() === 'textarea') {
-      input.rows = 4;
-    }
-    input.placeholder = field.placeholder;
-    input.name = field.name;
-
-    entryDiv.appendChild(label);
-    entryDiv.appendChild(input);
-    workExperienceContainer.appendChild(entryDiv);
-  });
-
-  const workExperienceSectionEl = document.getElementById('work_experience');
-
-  const removeButton = document.createElement('button'); // Remove button
-  removeButton.innerText = "Remove";
-  removeButton.style.marginTop = "20px";
-  removeButton.addEventListener('click', () => {
-    workExperienceContainer.remove();
-  });
-  workExperienceContainer.appendChild(removeButton);
-
-  workExperienceSectionEl.appendChild(workExperienceContainer);
+  addWorkExperience();
 });
 
-/*--------- Add more projects section ---------*/
+/* ------------------ Projects (Section) ------------------ */
 const projectButtonEl = document.getElementById('button_project');
 projectButtonEl.addEventListener('click', () => {
-  const projectContainer = document.createElement('div');
-  projectContainer.classList.add('add_project_manual');
-
-  // Create the input fields with labels
-  const fields = [
-    { label: "Project Name", id: "project_name", placeholder: "Project Name", name: "project_name" },
-    { label: "Technologies Used", id: "technologies_used", placeholder: "Technologies Used", name: "technologies_used" },
-    { label: "Description", id: "description", placeholder: "Description (e.g., Features, Achievements)", name: "description" },
-    { label: "Project Link", id: "project_link", placeholder: "Project Link", name: "project_link" }
-  ];
-
-  fields.forEach(field => {
-    const entryDiv = document.createElement('div');
-    entryDiv.classList.add('project-entry');
-
-    const label = document.createElement('label');
-    label.setAttribute('for', field.id);
-    label.innerText = field.label;
-    const input = document.createElement(field.id === "description" ? 'textarea' : 'input');
-    input.id = field.id;
-    if (input.tagName.toLowerCase() === 'input') {
-      input.type = 'text';
-    } else if (input.tagName.toLowerCase() === 'textarea') {
-      input.rows = 4;
-    }
-    input.placeholder = field.placeholder;
-    input.name = field.name;
-
-    entryDiv.appendChild(label);
-    entryDiv.appendChild(input);
-    projectContainer.appendChild(entryDiv);
-  });
-
-  const projectSectionEl = document.getElementById('projects');
-
-  const removeButton = document.createElement('button'); // Remove button
-  removeButton.innerText = "Remove";
-  removeButton.style.marginTop = "10px";
-  removeButton.addEventListener('click', () => {
-    projectContainer.remove();
-  });
-  projectContainer.appendChild(removeButton);
-
-  projectSectionEl.appendChild(projectContainer);
+  addProject();
 });
 
-/* Customization */
+/* ------------------ Customization ------------------ */
 buttonCustomization.onclick = function() {
   if (TemplateOneColumnEl) {
     TemplateOneColumnEl.style.display = 'none';
@@ -471,7 +321,7 @@ buttonCustomization.onclick = function() {
   }
 };
 
-/*------------------ Template 1 ------------------*/
+/* ------------------ Template 1 ------------------ */
 const buttonTemplateOne = document.getElementById('template_one');
 buttonTemplateOne.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
@@ -490,7 +340,7 @@ buttonTemplateOne.addEventListener('click', () => {
   applyTemplateOne(TemplateOneColumnEl);
 });
 
-/*------------------ Template 2 ------------------*/
+/* ------------------ Template 2 ------------------ */
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
@@ -509,7 +359,7 @@ buttonTemplateTwo.addEventListener('click', () => {
   applyTemplateTwo(TemplateTwoColumnEl);
 });
 
-/*------------------ Template 3 ------------------*/
+/* ------------------ Template 3 ------------------ */
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
