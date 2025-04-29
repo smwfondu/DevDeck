@@ -11,22 +11,14 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
     const nameEl = document.createElement('h3');
     nameEl.innerText = fullNameInputEl.value;
     nameEl.style.textAlign = 'center';
-    nameEl.style.borderBottom = '1px solid black';
     nameEl.style.marginBottom = '0';
     nameEl.style.paddingBottom = '0';
     TemplateThreeColumnEl.appendChild(nameEl);
 
-    // Bio
-    const bioEl = document.createElement('p');
-    bioEl.innerText = bioInputEl.value;
-    bioEl.style.marginTop = '0';
-    bioEl.style.paddingTop = '0';
-    TemplateThreeColumnEl.appendChild(bioEl);
-
     // Link
     const githubLinkEl = document.getElementById('link');
     const linkEl = document.createElement('a');
-    if (githubLinkEl.value !== ''){
+    if (githubLinkEl.value !== '') {
         let userGithubAccount = ('https://github.com/' + String(githubLinkEl.value));
         linkEl.href = userGithubAccount;
         linkEl.innerText = userGithubAccount;
@@ -35,11 +27,10 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
         linkEl.innerText = linkEl.href;
     }
     linkEl.target = '_blank'; // Open the link in a new tab
-    TemplateThreeColumnEl.appendChild(linkEl);
     // Add more links
     const linkSectionEl = document.getElementById('link_section');
     const linksSection = document.createElement('span');
-    // linksSection.style.marginTop = "10px";
+    linksSection.appendChild(linkEl);
     Array.from(linkSectionEl.children).forEach(linkContainer => {
         const linkInput = linkContainer.querySelector('input[type="url"]');
         if (linkInput && linkInput.value.trim()) {
@@ -49,18 +40,35 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
         linkEl.target = '_blank'; // Open the link in a new tab
         // linkEl.style.display = 'block'; // Display each link on a new line
         const separator = document.createElement('span');
-        separator.innerText = ' • ';
+        separator.innerText = ' | ';
         linksSection.appendChild(separator);
         linksSection.appendChild(linkEl);
         }
     });
     linksSection.style.textAlign = 'center';
+    linksSection.style.display = 'block';
+    linksSection.style.width = '100%';
     TemplateThreeColumnEl.appendChild(linksSection);
+
+    // Summary
+    const summaryHeading = document.createElement('h3');
+    summaryHeading.innerText = "SUMMARY";
+    summaryHeading.style.fontSize = "20px";
+    summaryHeading.style.borderBottom = "1px solid black";
+    TemplateThreeColumnEl.appendChild(summaryHeading);
+
+    // Bio
+    const bioEl = document.createElement('p');
+    bioEl.innerText = bioInputEl.value;
+    bioEl.style.marginTop = '0';
+    bioEl.style.paddingTop = '0';
+    TemplateThreeColumnEl.appendChild(bioEl);
 
     // Project
     const headingProject = document.createElement('h3');
     headingProject.innerText = "PROJECT";
     headingProject.style.fontSize = "20px";
+    headingProject.style.borderBottom = "1px solid black";
     TemplateThreeColumnEl.appendChild(headingProject);
     const projectsEl = document.createElement('div');
     projectsEl.classList.add('projects-section');
@@ -120,6 +128,7 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
     const educationProject = document.createElement('h3');
     educationProject.innerText = "EDUCATION";
     educationProject.style.fontSize = "20px";
+    educationProject.style.borderBottom = "1px solid black";
     TemplateThreeColumnEl.appendChild(educationProject);
     const educationSectionEl = document.getElementById('education');
     const educations = document.createElement('div');
@@ -166,6 +175,7 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
     const workExperienceHeading = document.createElement('h3');
     workExperienceHeading.innerText = "WORK EXPERIENCE";
     workExperienceHeading.style.fontSize = "20px";
+    workExperienceHeading.style.borderBottom = "1px solid black";
     TemplateThreeColumnEl.appendChild(workExperienceHeading);
 
     const workExperienceSectionEl = document.getElementById('work_experience');
@@ -216,6 +226,7 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
     const technicalSkills = document.createElement('h3');
     technicalSkills.innerText = "TECHNICAL SKILLS";
     technicalSkills.style.fontSize = "20px";
+    technicalSkills.style.borderBottom = "1px solid black";
     TemplateThreeColumnEl.appendChild(technicalSkills);
 
     const skillsSectionEl = document.getElementById('skills');
