@@ -457,8 +457,7 @@ buttonTemplateOne.addEventListener('click', () => {
   applyTemplateOne(TemplateOneColumnEl);
 });
 
-/* Template 2 */
-
+/*------------------ Template 2 ------------------*/
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
@@ -477,9 +476,10 @@ buttonTemplateTwo.addEventListener('click', () => {
   applyTemplateTwo(TemplateTwoColumnEl);
 });
 
-/* Template 3 */
+/*------------------ Template 3 ------------------*/
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
+  buttonCustomization.removeAttribute('style');
   if (CustomColumnEl) {
     CustomColumnEl.style.display = 'none';
   }
