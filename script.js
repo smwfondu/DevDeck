@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 
+/* Display a particular template */
+function displayColumnEl(columnEl) {
+  if (templateColumns.includes(columnEl)) {
+    templateColumns.forEach(el => el.style.display = 'none'); // Hide all columns
+    columnEl.style.display = 'block';                         // Show the selected column
+  }
+}
+
 function displayGitHubProjects(user) {
   const printProjectEl = document.getElementById('projects');
   const displayProjectEl = document.getElementById('to_display_project');
