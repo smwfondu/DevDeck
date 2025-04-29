@@ -11,6 +11,14 @@ const CustomColumnEl = document.getElementById('custom_template');
 const TemplateOneColumnEl = document.getElementById('template_one_place');
 const TemplateTwoColumnEl = document.getElementById('template_two_place');
 const TemplateThreeColumnEl = document.getElementById('template_three_place');
+
+const templateColumns = [
+  CustomColumnEl,
+  TemplateOneColumnEl,
+  TemplateTwoColumnEl,
+  TemplateThreeColumnEl
+];
+
 let templateEls = document.querySelectorAll(".template");
 
 /* --------------- Display Available GitHub Projects --------------- */
@@ -304,38 +312,27 @@ projectButtonEl.addEventListener('click', () => {
   addProject();
 });
 
+function displayColumnEl(columnEl) {
+  if (templateColumns.includes(columnEl)) {
+    templateColumns.forEach(el => el.style.display = 'none'); // Hide all columns
+    columnEl.style.display = 'block'; // Show the selected column
+    console.log(`${columnEl.id} is now displayed.`);
+  } else {
+    console.log("The provided column element is not in the templateColumns array.");
+  }
+}
+
+
 /* ------------------ Customization ------------------ */
 buttonCustomization.onclick = function() {
-  if (TemplateOneColumnEl) {
-    TemplateOneColumnEl.style.display = 'none';
-  }
-  if (TemplateTwoColumnEl) {
-    TemplateTwoColumnEl.style.display = 'none';
-  }
-  if (TemplateThreeColumnEl) {
-    TemplateThreeColumnEl.style.display = 'none';
-  }
-  if (CustomColumnEl) {
-    CustomColumnEl.style.display = 'block';
-  }
+  displayColumnEl(CustomColumnEl);
 };
 
 /* ------------------ Template 1 ------------------ */
 const buttonTemplateOne = document.getElementById('template_one');
 buttonTemplateOne.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
-  if (CustomColumnEl) {
-    CustomColumnEl.style.display = 'none';
-  }
-  if (TemplateTwoColumnEl) {
-    TemplateTwoColumnEl.style.display = 'none';
-  }
-  if (TemplateThreeColumnEl) {
-    TemplateThreeColumnEl.style.display = 'none';
-  }
-  if (TemplateOneColumnEl) {
-    TemplateOneColumnEl.style.display = 'block';
-  }
+  displayColumnEl(TemplateOneColumnEl);
   applyTemplateOne(TemplateOneColumnEl);
 });
 
@@ -343,18 +340,7 @@ buttonTemplateOne.addEventListener('click', () => {
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
-  if (CustomColumnEl) {
-    CustomColumnEl.style.display = 'none';
-  }
-  if (TemplateOneColumnEl) {
-    TemplateOneColumnEl.style.display = 'none';
-  }
-  if (TemplateThreeColumnEl) {
-    TemplateThreeColumnEl.style.display = 'none';
-  }
-  if (TemplateTwoColumnEl) {
-    TemplateTwoColumnEl.style.display = 'block';
-  }
+  displayColumnEl(TemplateTwoColumnEl);
   applyTemplateTwo(TemplateTwoColumnEl);
 });
 
@@ -362,17 +348,6 @@ buttonTemplateTwo.addEventListener('click', () => {
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
-  if (CustomColumnEl) {
-    CustomColumnEl.style.display = 'none';
-  }
-  if (TemplateOneColumnEl) {
-    TemplateOneColumnEl.style.display = 'none';
-  }
-  if (TemplateTwoColumnEl) {
-    TemplateTwoColumnEl.style.display = 'none';
-  }
-  if (TemplateThreeColumnEl) {
-    TemplateThreeColumnEl.style.display = 'block';
-  }
+  displayColumnEl(TemplateThreeColumnEl);
   applyTemplateThree(TemplateThreeColumnEl);
 });
