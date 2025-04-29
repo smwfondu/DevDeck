@@ -4,10 +4,10 @@ export function addProject() {
 
     // Create the input fields with labels
     const fields = [
-    { label: "Project Name", id: "project_name", placeholder: "Project Name", name: "project_name" },
-    { label: "Technologies Used", id: "technologies_used", placeholder: "Technologies Used", name: "technologies_used" },
+    { label: "Project Name", id: "project_name", placeholder: "DevDeck", name: "project_name" },
+    { label: "Technologies Used", id: "technologies_used", placeholder: "HTML, CSS, JS", name: "technologies_used" },
     { label: "Description", id: "description", placeholder: "Description (e.g., Features, Achievements)", name: "description" },
-    { label: "Project Link", id: "project_link", placeholder: "Project Link", name: "project_link" }
+    { label: "Project Link", id: "project_link", placeholder: "Project URL", name: "project_link" }
     ];
 
     fields.forEach(field => {

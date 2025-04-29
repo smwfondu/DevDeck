@@ -4,10 +4,10 @@ export function addWorkExperience() {
 
     // Create the input fields with labels
     const fields = [
-    { label: "Company Name", id: "company_name", placeholder: "Company Name", name: "company_name" },
-    { label: "Position", id: "position", placeholder: "Position", name: "position" },
+    { label: "Company Name", id: "company_name", placeholder: "XYZ", name: "company_name" },
+    { label: "Position", id: "position", placeholder: "Front-End Developer", name: "position" },
     { label: "Duration", id: "duration", placeholder: "Duration (e.g., Jan 2020 - Dec 2022)", name: "duration" },
-    { label: "Location", id: "location", placeholder: "Location", name: "location" },
+    { label: "Location", id: "location", placeholder: "Lowell, MA", name: "location" },
     { label: "Description", id: "description", placeholder: "Description (e.g., Achievements, Responsibilities)", name: "description" }
     ];
 

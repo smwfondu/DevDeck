@@ -4,11 +4,11 @@ export function addEducation() {
 
     // Create the first input element with a label
     const fields = [
-    { label: "School Name", id: "school_name", placeholder: "School Name", name: "school_name" },
-    { label: "Degree", id: "degree", placeholder: "Degree", name: "degree" },
-    { label: "Field of Study", id: "field_of_study", placeholder: "Field of Study", name: "field_of_study" },
-    { label: "Graduation Year", id: "graduation_year", placeholder: "Graduation Year", name: "graduation_year" },
-    { label: "Location", id: "location", placeholder: "Location", name: "location" }
+    { label: "School Name", id: "school_name", placeholder: "XYZ University", name: "school_name" },
+    { label: "Degree", id: "degree", placeholder: "Associate of Science", name: "degree" },
+    { label: "Field of Study", id: "field_of_study", placeholder: "Computer Science", name: "field_of_study" },
+    { label: "Graduation Year", id: "graduation_year", placeholder: "May 2027", name: "graduation_year" },
+    { label: "Location", id: "location", placeholder: "Boston, MA", name: "location" }
     ];
 
     fields.forEach(field => {
