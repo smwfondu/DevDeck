@@ -5,7 +5,7 @@
 * Course: Software Engineering II 2025 Spring - COMP 4120 201
 * Instructor: Dr. Daly
 * Student: Christian Ambrosini, Ryan Cayton, William Fondoulis, Vraj Patel
-* Date: In-progress
+* Date: 4/28/2025
 
 ## Description
 
@@ -18,7 +18,7 @@ To run the program: [DevDeck](https://www.cs.uml.edu/~wfondoul/)
 
 ## Technology Stack
 
-* Frontend: HTML, CSS
+* Frontend: HTML, CSS, JavaScript
 * Backend: C++, JavaScript
 * Deployment: UML Server (frontend & backend)
 
