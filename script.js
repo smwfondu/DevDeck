@@ -95,8 +95,12 @@ function displayGitHubProjects(user) {
             <div>${repo.description}</div>
             <div>${repo.link}</div>
           `;
+          displayProjectEl.style.border = '4px dotted green';
+          displayProjectEl.style.padding = '10px';
       } else {                  // Don't preview the project if already added on the resume
         displayProjectEl.innerHTML = '';
+        displayProjectEl.style.border = 'none';
+        displayProjectEl.style.padding = '0';
       }
 
     });
