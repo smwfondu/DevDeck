@@ -315,10 +315,7 @@ projectButtonEl.addEventListener('click', () => {
 function displayColumnEl(columnEl) {
   if (templateColumns.includes(columnEl)) {
     templateColumns.forEach(el => el.style.display = 'none'); // Hide all columns
-    columnEl.style.display = 'block'; // Show the selected column
-    console.log(`${columnEl.id} is now displayed.`);
-  } else {
-    console.log("The provided column element is not in the templateColumns array.");
+    columnEl.style.display = 'block';                         // Show the selected column
   }
 }
 
