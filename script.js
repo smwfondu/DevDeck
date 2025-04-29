@@ -310,13 +310,17 @@ projectButtonEl.addEventListener('click', () => {
 
 /* ------------------ Customization ------------------ */
 buttonCustomization.onclick = function() {
+  rightMostColumnEl.style.display = "flex";
   displayColumnEl(CustomColumnEl);
 };
+
+const rightMostColumnEl = document.getElementById('right_column');
 
 /* ------------------ Template 1 ------------------ */
 const buttonTemplateOne = document.getElementById('template_one');
 buttonTemplateOne.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
+  rightMostColumnEl.style.display = "none";
   displayColumnEl(TemplateOneColumnEl);
   applyTemplateOne(TemplateOneColumnEl);
 });
@@ -325,6 +329,7 @@ buttonTemplateOne.addEventListener('click', () => {
 const buttonTemplateTwo = document.getElementById('template_two');
 buttonTemplateTwo.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
+  rightMostColumnEl.style.display = "none";
   displayColumnEl(TemplateTwoColumnEl);
   applyTemplateTwo(TemplateTwoColumnEl);
 });
@@ -333,6 +338,7 @@ buttonTemplateTwo.addEventListener('click', () => {
 const buttonTemplateThree = document.getElementById('template_three');
 buttonTemplateThree.addEventListener('click', () => {
   buttonCustomization.removeAttribute('style');
+  rightMostColumnEl.style.display = "none";
   displayColumnEl(TemplateThreeColumnEl);
   applyTemplateThree(TemplateThreeColumnEl);
 });
