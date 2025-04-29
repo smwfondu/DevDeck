@@ -308,14 +308,6 @@ projectButtonEl.addEventListener('click', () => {
   addProject();
 });
 
-function displayColumnEl(columnEl) {
-  if (templateColumns.includes(columnEl)) {
-    templateColumns.forEach(el => el.style.display = 'none'); // Hide all columns
-    columnEl.style.display = 'block';                         // Show the selected column
-  }
-}
-
-
 /* ------------------ Customization ------------------ */
 buttonCustomization.onclick = function() {
   displayColumnEl(CustomColumnEl);
