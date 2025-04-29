@@ -100,10 +100,6 @@ button {
     margin-top: 20px;
 }
 
-.button_education {
-    margin-top: 5px;
-}
-
 button:hover {
     background-color: #b1abab;
 }
