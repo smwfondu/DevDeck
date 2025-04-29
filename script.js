@@ -198,7 +198,7 @@ document.getElementById('export-pdf').addEventListener('click', async function()
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-      title = `${document.getElementById('full_name').value}'s Resume`
+      const title = `${document.getElementById('full_name').value}'s Resume`
 
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(title);
