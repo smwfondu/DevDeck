@@ -3,6 +3,12 @@ import { applyTemplateTwo } from './Templates/template2.js';
 import { applyTemplateThree } from './Templates/template3.js';
 
 const githubProjectsEl = document.getElementById('github-projects');
+/* Applying templates to the resume */
+const CustomColumnEl = document.getElementById('custom_template');
+const TemplateOneColumnEl = document.getElementById('template_one_place');
+const TemplateTwoColumnEl = document.getElementById('template_two_place');
+const TemplateThreeColumnEl = document.getElementById('template_three_place');
+let templateEls = document.querySelectorAll(".template");
 
 /*---------------GitHub Project---------------*/
 document.addEventListener('DOMContentLoaded', function(){
@@ -49,6 +55,27 @@ function displayGitHubProjects(user) {
     const checkbox = document.getElementById(project.children[0].id);
 
     project.addEventListener('click', function() { // Highlight the project the user selects
+      // Take to the custom div
+      if (CustomColumnEl) {
+        CustomColumnEl.style.display = 'block';
+      }
+      if (TemplateOneColumnEl) {
+        TemplateOneColumnEl.style.display = 'none';
+      }
+      if (TemplateTwoColumnEl) {
+        TemplateTwoColumnEl.style.display = 'none';
+      }
+      if (TemplateThreeColumnEl) {
+        TemplateThreeColumnEl.style.display = 'none';
+      }
+
+      // Remove templates highlighting
+      for (let i = 0; i < templateEls.length; i++) {
+        templateEls[i].style.border = "none";
+      }
+      buttonCustomization.style.backgroundColor = "black";
+      buttonCustomization.style.color = "white";
+
       document.querySelectorAll('.project').forEach(el => {
         el.style.border = 'solid 4px transparent';
       });
@@ -119,8 +146,6 @@ function displayGitHubProjects(user) {
 }
 
 /*---------------Templates Section---------------*/
-let templateEls = document.querySelectorAll(".template");
-var templateSelectedEl = document.querySelector(".template-selected");
 const buttonCustomization = document.getElementById('button_template');
 
 for (let i = 0; i < templateEls.length; i++) {
@@ -429,12 +454,6 @@ projectButtonEl.addEventListener('click', () => {
 
   projectSectionEl.appendChild(projectContainer);
 });
-
-/* Applying templates to the resume */
-const CustomColumnEl = document.getElementById('custom_template');
-const TemplateOneColumnEl = document.getElementById('template_one_place');
-const TemplateTwoColumnEl = document.getElementById('template_two_place');
-const TemplateThreeColumnEl = document.getElementById('template_three_place');
 
 /* Customization */
 buttonCustomization.onclick = function() {
