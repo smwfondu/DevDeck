@@ -36,7 +36,9 @@ export function addProject() {
 
     const removeButton = document.createElement('button'); // Remove button
     removeButton.innerText = "Remove";
-    removeButton.style.marginTop = "10px";
+    removeButton.style.marginLeft = "10px";
+    removeButton.style.marginBottom = "10px";
+    removeButton.style.marginTop = "5px";
     removeButton.addEventListener('click', () => {
     projectContainer.remove();
     });

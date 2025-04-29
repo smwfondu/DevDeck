@@ -35,6 +35,8 @@ export function addEducation() {
     const removeButton = document.createElement('button'); // Remove button
     removeButton.innerText = "Remove";
     removeButton.style.marginLeft = "10px";
+    removeButton.style.marginBottom = "10px";
+    removeButton.style.marginTop = "5px";
     removeButton.addEventListener('click', () => {
     educationContainer.remove();
     });

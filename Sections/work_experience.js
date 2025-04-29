@@ -38,7 +38,9 @@ export function addWorkExperience() {
 
     const removeButton = document.createElement('button'); // Remove button
     removeButton.innerText = "Remove";
-    removeButton.style.marginTop = "20px";
+    removeButton.style.marginLeft = "10px";
+    removeButton.style.marginBottom = "10px";
+    removeButton.style.marginTop = "5px";
     removeButton.addEventListener('click', () => {
     workExperienceContainer.remove();
     });
