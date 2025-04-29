@@ -29,6 +29,13 @@ function displayGitHubProjects(user) {
     project.innerText = repo.repo_name;
     const addProjectInputEl = document.createElement('input');
     addProjectInputEl.type = "checkbox";
+    addProjectInputEl.style.width = "20px";
+    addProjectInputEl.style.height = "20px";
+    addProjectInputEl.style.accentColor = "#4CAF50"; // Green color
+    addProjectInputEl.style.borderRadius = "5px"; // Rounded corners
+    addProjectInputEl.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)"; // Subtle shadow
+    addProjectInputEl.style.marginRight = "10px";
+    addProjectInputEl.style.cursor = "pointer";
     addProjectInputEl.id = "myCheckbox" + index;
     addProjectInputEl.name = "myCheckbox";
     addProjectInputEl.value = "checked";
