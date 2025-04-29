@@ -74,19 +74,7 @@ function displayGitHubProjects(user) {
     const checkbox = document.getElementById(project.children[0].id);
 
     project.addEventListener('click', function() { // Highlight the project the user selects
-      // Take to the custom div
-      if (CustomColumnEl) {
-        CustomColumnEl.style.display = 'block';
-      }
-      if (TemplateOneColumnEl) {
-        TemplateOneColumnEl.style.display = 'none';
-      }
-      if (TemplateTwoColumnEl) {
-        TemplateTwoColumnEl.style.display = 'none';
-      }
-      if (TemplateThreeColumnEl) {
-        TemplateThreeColumnEl.style.display = 'none';
-      }
+      displayColumnEl(CustomColumnEl);
 
       // Remove templates highlighting
       for (let i = 0; i < templateEls.length; i++) {
