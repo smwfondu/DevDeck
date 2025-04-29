@@ -348,7 +348,11 @@ workExperienceButtonEl.addEventListener('click', () => {
 
     const input = document.createElement(field.id === "description" ? 'textarea' : 'input');
     input.id = field.id;
-    input.type = "text";
+    if (input.tagName.toLowerCase() === 'input') {
+      input.type = 'text';
+    } else if (input.tagName.toLowerCase() === 'textarea') {
+      input.rows = 4;
+    }
     input.placeholder = field.placeholder;
     input.name = field.name;
 
@@ -391,10 +395,13 @@ projectButtonEl.addEventListener('click', () => {
     const label = document.createElement('label');
     label.setAttribute('for', field.id);
     label.innerText = field.label;
-
     const input = document.createElement(field.id === "description" ? 'textarea' : 'input');
     input.id = field.id;
-    input.type = "text";
+    if (input.tagName.toLowerCase() === 'input') {
+      input.type = 'text';
+    } else if (input.tagName.toLowerCase() === 'textarea') {
+      input.rows = 4;
+    }
     input.placeholder = field.placeholder;
     input.name = field.name;
 
