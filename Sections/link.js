@@ -4,10 +4,10 @@ export function addLink() {
   linkContainer.style.marginTop = "5px";
 
   const linkLabel = document.createElement('label');
-  linkLabel.setAttribute('for', 'link');
-  linkLabel.innerText = 'Link:';
+  linkLabel.setAttribute('for', 'professional_link');
 
   const linkInput = document.createElement('input');
+  linkInput.id = 'professional_link';
   linkInput.type = 'url';
   linkInput.name = 'link';
   linkInput.placeholder = 'Enter a URL';
@@ -15,7 +15,6 @@ export function addLink() {
   const removeButton = document.createElement('button');
   removeButton.innerText = 'Remove';
   removeButton.style.marginLeft = "10px";
-  removeButton.style.marginBottom = "10px";
   removeButton.style.marginTop = "5px";
   removeButton.addEventListener('click', () => {
     linkContainer.remove();
