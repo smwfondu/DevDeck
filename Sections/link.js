@@ -15,7 +15,7 @@ export function addLink() {
   const removeButton = document.createElement('button');
   removeButton.innerText = 'Remove';
   removeButton.style.marginLeft = "10px";
-  removeButton.style.marginTop = "5px";
+  removeButton.style.marginBottom = "10px";
   removeButton.addEventListener('click', () => {
     linkContainer.remove();
   });
