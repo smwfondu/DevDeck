@@ -53,15 +53,6 @@ button {
 
 button {
     padding: 10px;
-    /* background-color: #b1abab; */
-}
-
-.template {
-    background-color: white;
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .middle-column {
