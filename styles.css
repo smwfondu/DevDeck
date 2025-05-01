@@ -37,6 +37,22 @@ header h1 {
     border: solid yellow 3px;
 }
 
+.container_user_github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container_user_github label {
+    display: none;
+}
+
+#input_header {
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
 button {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
