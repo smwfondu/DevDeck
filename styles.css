@@ -199,6 +199,12 @@ textarea:focus,
     outline-offset: 1px;
 }
 
+#input_header:focus {
+    outline: none;
+    outline: 2px solid yellow;
+    outline-offset: 1px;
+}
+
 .label_templates {
     font-size: 20px;
     margin-top: 30px;
