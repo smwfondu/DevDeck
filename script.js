@@ -300,8 +300,8 @@ buttonCustomization.onclick = function() {
 const rightMostColumnEl = document.getElementById('right_column');
 
 /* ------------------ Templates ------------------ */
-const templatesDropdown = document.getElementById('templates');
-templatesDropdown.addEventListener('change', () => {
+const templatesDropdown = document.getElementById('multiple_template');
+templatesDropdown.addEventListener('click', () => {
   const selectedValue = templatesDropdown.value;
   if (selectedValue === 'template_one') {           // Template 1
     buttonCustomization.removeAttribute('style');
