@@ -172,8 +172,6 @@ buttonCustomization.addEventListener('click', () => {
   for (let i = 0; i < templateEls.length; i++) {
     templateEls[i].style.border = "none";
   }
-  buttonCustomization.style.backgroundColor = "black";
-  buttonCustomization.style.color = "white";
 });
 
 // PDF EXPORATION LISTENER
