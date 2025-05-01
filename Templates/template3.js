@@ -16,7 +16,7 @@ export function applyTemplateThree(TemplateThreeColumnEl) {
     TemplateThreeColumnEl.appendChild(nameEl);
 
     // Link
-    const githubLinkEl = document.getElementById('sample_link');
+    const githubLinkEl = document.getElementById('input_header');
     const linkEl = document.createElement('a');
     if (githubLinkEl.value !== '') {
         let userGithubAccount = ('https://github.com/' + String(githubLinkEl.value));

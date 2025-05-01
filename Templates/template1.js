@@ -17,7 +17,7 @@ export function applyTemplateOne(TemplateOneColumnEl) {
     TemplateOneColumnEl.appendChild(bioEl);
   
     // Link
-    const githubLinkEl = document.getElementById('sample_link');
+    const githubLinkEl = document.getElementById('input_header');
     const linkEl = document.createElement('a');
     if (githubLinkEl.value !== ''){
       let userGithubAccount = ('https://github.com/' + String(githubLinkEl.value));
