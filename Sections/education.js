@@ -37,6 +37,7 @@ export function addEducation() {
     removeButton.innerText = "Remove";
     removeButton.style.marginLeft = "10px";
     removeButton.style.marginBottom = "10px";
+    removeButton.ariaLabel = 'Remove education';
     removeButton.addEventListener('click', () => {
     educationContainer.remove();
     });

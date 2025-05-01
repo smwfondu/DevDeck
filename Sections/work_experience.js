@@ -41,6 +41,7 @@ export function addWorkExperience() {
     removeButton.innerText = "Remove";
     removeButton.style.marginLeft = "10px";
     removeButton.style.marginBottom = "10px";
+    removeButton.ariaLabel = 'Remove work experience';
     removeButton.addEventListener('click', () => {
     workExperienceContainer.remove();
     });

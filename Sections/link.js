@@ -18,6 +18,7 @@ export function addLink() {
   removeButton.innerText = 'Remove';
   removeButton.style.marginLeft = "10px";
   removeButton.style.marginBottom = "10px";
+  removeButton.ariaLabel = 'Remove link';
   removeButton.addEventListener('click', () => {
     linkContainer.remove();
   });

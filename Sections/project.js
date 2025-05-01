@@ -39,6 +39,7 @@ export function addProject() {
     removeButton.innerText = "Remove";
     removeButton.style.marginLeft = "10px";
     removeButton.style.marginBottom = "10px";
+  removeButton.ariaLabel = 'Remove project';
     removeButton.addEventListener('click', () => {
     projectContainer.remove();
     });
