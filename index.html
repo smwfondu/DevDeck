@@ -13,20 +13,24 @@
         <a class="logo_devdeck" href='/' aria-label="DevDeck logo - Go to homepage">
             DevDeck
         </a>
-        <button id="fetchButton" class="button-header">GitHub Sign-In</button>
+        <div role="find_user">
+            <label for="link">Github Username:</label>
+            <input type="text" id="link" name="link" placeholder="Enter a username">
+            <button id="fetchButton" class="button-header">GitHub Sign-In</button>
+        </div>
     </header>
     <main class="columns">
-        <section class="column left-column">
-            <button id="button_template">Customization</button>
-	        <button id="export-pdf">Export to PDF</button>
+        <div class="column left-column" aria-label="Resume Building Tools">
+            <button id="button_template" aria-label="Open resume template customization options">Customization</button>
+	        <button id="export-pdf" aria-label="Export resume to pdf">Export to PDF</button>
             <label class="label_templates" for="templates">Choose a template:</label>
             <select name="templates" id="templates" class="dropdown_templates">
                 <option id="template_one" value="template_one">Template #1</option>
                 <option id="template_two" value="template_two">Template #2</option>
                 <option id="template_three" value="template_three">Template #3</option>
             </select>
-        </section>
-        <section id="main_column" class="column middle-column">
+        </div>
+        <div id="main_column" class="column middle-column" aria-label="Resume Customization Options">
             <div id="custom_template" class="template-selected">
                 <div class="user_info full_name">
                     <label for="full_name">Full Name</label>
@@ -36,54 +40,60 @@
                     <label for="bio">Bio</label>
                     <input id="bio" type="text" placeholder="I am a Full-Stack Developer" name="bio">
                 </div>
-                <h2>Links</h2>
-                <p>
-                    <span id="link_section">
-                        <a id="sample_link" href="https://github.com/" target="_blank">GitHub link</a>
-                    </span>
-                </p>
-                <button id="button_link">+</button>
-                <div style="margin-top:5px;">
-                    <label for="link">Github Username:</label>
-                    <input type="url" id="link" name="link" placeholder="Enter a username">
-                </div>
-                <h2>Projects</h2>
-                <div id="projects">
-                </div>
-                <div id="to_display_project">
-                </div>
-                <button class="button_project" id="button_project">+</button>
-                <h2>Education</h2>
-                <div id="education">
-                </div>
-                <button class="button_education" id="button_education">+</button>
+                <!-- Links -->
+                <section>
+                    <h2>Links</h2>
+                    <a id="sample_link" href="https://github.com/" target="_blank" aria-label="GitHub link (opens in a new tab)">GitHub link</a>
+                    <div id="link_section"></div>
+                    <button id="button_link" aria-label="Add new link">+</button>
+                </section>
+                <!-- Projects -->
+                <section>
+                    <h2>Projects</h2>
+                    <div id="projects"></div>
+                    <div id="to_display_project"></div>
+                    <button class="button_project" id="button_project" aria-label="Add new project">+</button>
+                </section>
+                <!-- Education -->
+                <section>
+                    <h2>Education</h2>
+                    <div id="education"></div>
+                    <button class="button_education" id="button_education" aria-label="Add new education">+</button>
+                </section>
                 <!-- Work Experience -->
-                <h2>Work Experience</h2>
-                <div id="work_experience">
+                <section >
+                    <h2>Work Experience</h2>
+                    <div id="work_experience"></div>
+                    <button class="button_work_experience" id="button_work_experience" aria-label="Add new work experience">+</button>
+                </section>
+                <!-- Skills -->
+                <section >
+                    <h2>Skills</h2>
+                    <div id="skills">
+                        <label for="multiple_skills">Soft and Technical Skills</label>
+                        <textarea id="multiple_skills" name="multiple_skills" type="text" placeholder="Enter skills separated by commas (Python, jQuery...)" style="width: 99%; max-width: 99%;"></textarea>
+                    </div>
+                </section>
+            </div>
+            <div>
+                <!-- Template One -->
+                <div id="template_one_place" class="template_one_selected template-selected" aria-label="Resume template one">
+                    This is template one.
                 </div>
-                <button class="button_work_experience" id="button_work_experience">+</button>
-                <h2>Skills</h2>
-                <div id="skills">
-                    <textarea type="text" placeholder="Enter skills separated by commas (Python, jQuery...)" style="width: 99%; max-width: 99%;"></textarea>
+                <!-- Template Two  -->
+                <div id="template_two_place" class="template_two_selected template-selected" aria-label="Resume template two">
+                    This is template Two.
+                </div>
+                <!-- Template Three  -->
+                <div id="template_three_place" class="template_three_selected template-selected" aria-label="Resume template three">
+                    This is template Three.
                 </div>
             </div>
-            <!-- Template One -->
-            <div id="template_one_place" class="template_one_selected template-selected">
-                This is template one.
-            </div>
-            <!-- Template Two  -->
-            <div id="template_two_place" class="template_two_selected template-selected">
-                This is template Two.
-            </div>
-            <!-- Template Three  -->
-            <div id="template_three_place" class="template_three_selected template-selected">
-                This is template Three.
-            </div>
-        </section>
-        <section id="right_column" class="column right-column">
+        </div>
+        <div id="right_column" class="column right-column">
             <h1>Available GitHub Projects</h1>
             <div id="github-projects" class="github-projects-section"></div>
-        </section>
+        </div>
     </main>
     <script type="module" src="./script.js"></script>
 </body>
