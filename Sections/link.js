@@ -5,6 +5,7 @@ export function addLink() {
 
   const linkLabel = document.createElement('label');
   linkLabel.setAttribute('for', 'professional_link');
+  linkLabel.innerText = 'Link'
 
   const linkInput = document.createElement('input');
   linkInput.id = 'professional_link';
