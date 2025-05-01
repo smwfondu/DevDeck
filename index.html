@@ -14,7 +14,7 @@
             DevDeck
         </a>
         <div class="container_user_github" aria-label="GitHub sign up">
-            <label for="link">Github Username:</label>
+            <label for="link">GitHub Username:</label>
             <input id="input_header" type="text" name="link" placeholder="Enter a Github username">
             <button id="fetchButton" class="button-header">GitHub Sign-In</button>
         </div>
@@ -23,12 +23,23 @@
         <div class="column left-column" aria-label="Resume Building Tools">
             <button id="button_template" aria-label="Open resume template customization options">Customization</button>
 	        <button id="export-pdf" aria-label="Export resume to pdf">Export to PDF</button>
-            <label class="label_templates" for="templates">Choose a template:</label>
-            <select id="multiple_template" name="templates" id="templates" class="dropdown_templates">
-                <option id="template_one" value="template_one">Template #1</option>
-                <option id="template_two" value="template_two">Template #2</option>
-                <option id="template_three" value="template_three">Template #3</option>
-            </select>
+            <fieldset>
+                <legend class="label_templates" for="templates">Choose a template:</legend>
+                <div id="template_one" class="template">
+                    <label for="template_one_radio" aria-label="Apply resume template one">Template #1</label>
+                    <input type="radio" id="template_one_radio" name="templates" value="template_one">
+                </div>
+            
+                <div id="template_two" class="template">
+                    <label for="template_two_radio"  aria-label="Apply resume template two">Template #2</label>
+                    <input type="radio" id="template_two_radio" name="templates" value="template_two">
+                </div>
+            
+                <div id="template_three" class="template">
+                    <label for="template_three_radio" aria-label="Apply resume template three">Template #3</label>
+                    <input type="radio" id="template_three_radio" name="templates" value="template_three">
+                </div>
+            </fieldset>
         </div>
         <div id="main_column" class="column middle-column" aria-label="Resume Customization Options">
             <div id="custom_template" class="template-selected">
