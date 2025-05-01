@@ -21,20 +21,6 @@ const templateColumns = [
   TemplateThreeColumnEl
 ];
 
-/* --------------- Display Available GitHub Projects --------------- */
-document.addEventListener('DOMContentLoaded', function(){
-  const storedData = localStorage.getItem('github_data');
-  
-  if (storedData) {
-    // Process the data directly since it's already a JSON object
-    const user = JSON.parse(storedData);
-    displayGitHubProjects(user);
-  } else {
-    githubProjectsEl.innerText = "No projects are available";
-    console.log('Error loading templates:', 'No GitHub data found in localStorage');
-  }
-});
-
 /* Display a particular template */
 function displayColumnEl(columnEl) {
   if (templateColumns.includes(columnEl)) {
@@ -218,8 +204,6 @@ function prepareForExport(element) {
 
 document.getElementById('fetchButton').addEventListener('click', async () => {
   const username = document.getElementById('input_header').value.trim();
-  console.log('FetchButton Clicked!');
-  console.log('Username is:', username);
   if (!username) {
       alert('Please enter a GitHub username');
       return;
@@ -227,7 +211,6 @@ document.getElementById('fetchButton').addEventListener('click', async () => {
 
   try {
     const data = await fetchGitHubData(username);
-    console.log(data);
     
     localStorage.setItem('github_data', JSON.stringify(data));
 
