@@ -279,21 +279,26 @@ buttonCustomization.onclick = function() {
 
 const rightMostColumnEl = document.getElementById('right_column');
 
-/* ------------------ Templates ------------------ */
-const templatesDropdown = document.getElementById('multiple_template');
-templatesDropdown.addEventListener('click', () => {
-  const selectedValue = templatesDropdown.value;
-  if (selectedValue === 'template_one') {           // Template 1
+/* ------------------ Template 1 ------------------ */
+const buttonTemplateOne = document.getElementById('template_one');
+buttonTemplateOne.addEventListener('change', () => {
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateOneColumnEl);
     applyTemplateOne(TemplateOneColumnEl);
-  } else if (selectedValue === 'template_two') {    // Template 2
+});
+
+/* ------------------ Template 2 ------------------ */
+const buttonTemplateTwo = document.getElementById('template_two');
+buttonTemplateTwo.addEventListener('change', () => {
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateTwoColumnEl);
     applyTemplateTwo(TemplateTwoColumnEl);
-  } else if (selectedValue === 'template_three') {  // Template 3
+});
+
+/* ------------------ Template 3 ------------------ */
+const buttonTemplateThree = document.getElementById('template_three');
+buttonTemplateThree.addEventListener('change', () => {
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateThreeColumnEl);
     applyTemplateThree(TemplateThreeColumnEl);
-  }
 });
