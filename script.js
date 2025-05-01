@@ -7,10 +7,12 @@ import { addProject } from './Sections/project.js';
 import { addLink } from './Sections/link.js';
 
 const githubProjectsEl = document.getElementById('github-projects');
+const buttonCustomization = document.getElementById('button_template');
 const CustomColumnEl = document.getElementById('custom_template');
 const TemplateOneColumnEl = document.getElementById('template_one_place');
 const TemplateTwoColumnEl = document.getElementById('template_two_place');
 const TemplateThreeColumnEl = document.getElementById('template_three_place');
+
 
 const templateColumns = [
   CustomColumnEl,
@@ -18,8 +20,6 @@ const templateColumns = [
   TemplateTwoColumnEl,
   TemplateThreeColumnEl
 ];
-
-let templateEls = document.querySelectorAll(".template");
 
 /* --------------- Display Available GitHub Projects --------------- */
 document.addEventListener('DOMContentLoaded', function(){
@@ -79,10 +79,6 @@ function displayGitHubProjects(user) {
     project.addEventListener('click', function() { // Highlight the project the user selects
       displayColumnEl(CustomColumnEl);
 
-      // Remove templates highlighting
-      for (let i = 0; i < templateEls.length; i++) {
-        templateEls[i].style.border = "none";
-      }
       buttonCustomization.style.backgroundColor = "black";
       buttonCustomization.style.color = "white";
 
@@ -158,24 +154,6 @@ function displayGitHubProjects(user) {
     });
   });
 }
-
-/* --------------- Highlight GitHub Projects Selection --------------- */
-const buttonCustomization = document.getElementById('button_template');
-for (let i = 0; i < templateEls.length; i++) {
-  templateEls[i].onclick = function() {
-    for (let j = 0; j < templateEls.length; j++) {
-      templateEls[j].style.border = "solid 4px transparent";
-    }
-    this.style.border = "solid 4px red";
-  };
-}
-
-/* --------------- Highlight Custom Template Selection --------------- */
-buttonCustomization.addEventListener('click', () => {
-  for (let i = 0; i < templateEls.length; i++) {
-    templateEls[i].style.border = "none";
-  }
-});
 
 // PDF EXPORATION LISTENER
 document.getElementById('export-pdf').addEventListener('click', async function() {
