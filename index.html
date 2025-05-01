@@ -13,13 +13,16 @@
         <h1>DevDeck</h1>
         <button id="fetchButton" class="button-header">GitHub Sign-In</button>
     </header>
-    <div class="columns">
+    <main class="columns">
         <section class="column left-column">
             <button id="button_template">Customization</button>
 	        <button id="export-pdf">Export to PDF</button>
-            <div id="template_one" class="template">Template #1</div>
-            <div id="template_two" class="template">Template #2</div>
-            <div id="template_three" class="template">Template #3</div>
+            <label for="templates">Choose a template:</label>
+            <select name="templates" id="templates">
+                <option id="template_one" value="template_one">Template #1</option>
+                <option id="template_two" value="template_two">Template #2</option>
+                <option id="template_three" value="template_three">Template #3</option>
+            </select>
         </section>
         <section id="main_column" class="column middle-column">
             <div id="custom_template" class="template-selected">
@@ -76,10 +79,10 @@
             </div>
         </section>
         <section id="right_column" class="column right-column">
-            <h3>Available GitHub Projects</h3>
+            <h1>Available GitHub Projects</h1>
             <div id="github-projects" class="github-projects-section"></div>
         </section>
-    </div>
+    </main>
     <script type="module" src="./script.js"></script>
 </body>
 </html>
