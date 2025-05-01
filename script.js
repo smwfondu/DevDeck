@@ -318,29 +318,24 @@ buttonCustomization.onclick = function() {
 
 const rightMostColumnEl = document.getElementById('right_column');
 
-/* ------------------ Template 1 ------------------ */
-const buttonTemplateOne = document.getElementById('template_one');
-buttonTemplateOne.addEventListener('click', () => {
-  buttonCustomization.removeAttribute('style');
-  rightMostColumnEl.style.display = "none";
-  displayColumnEl(TemplateOneColumnEl);
-  applyTemplateOne(TemplateOneColumnEl);
-});
-
-/* ------------------ Template 2 ------------------ */
-const buttonTemplateTwo = document.getElementById('template_two');
-buttonTemplateTwo.addEventListener('click', () => {
-  buttonCustomization.removeAttribute('style');
-  rightMostColumnEl.style.display = "none";
-  displayColumnEl(TemplateTwoColumnEl);
-  applyTemplateTwo(TemplateTwoColumnEl);
-});
-
-/* ------------------ Template 3 ------------------ */
-const buttonTemplateThree = document.getElementById('template_three');
-buttonTemplateThree.addEventListener('click', () => {
-  buttonCustomization.removeAttribute('style');
-  rightMostColumnEl.style.display = "none";
-  displayColumnEl(TemplateThreeColumnEl);
-  applyTemplateThree(TemplateThreeColumnEl);
+/* ------------------ Templates ------------------ */
+const templatesDropdown = document.getElementById('templates');
+templatesDropdown.addEventListener('change', () => {
+  const selectedValue = templatesDropdown.value;
+  if (selectedValue === 'template_one') {           // Template 1
+    buttonCustomization.removeAttribute('style');
+    rightMostColumnEl.style.display = "none";
+    displayColumnEl(TemplateOneColumnEl);
+    applyTemplateOne(TemplateOneColumnEl);
+  } else if (selectedValue === 'template_two') {    // Template 2
+    buttonCustomization.removeAttribute('style');
+    rightMostColumnEl.style.display = "none";
+    displayColumnEl(TemplateTwoColumnEl);
+    applyTemplateTwo(TemplateTwoColumnEl);
+  } else if (selectedValue === 'template_three') {  // Template 3
+    buttonCustomization.removeAttribute('style');
+    rightMostColumnEl.style.display = "none";
+    displayColumnEl(TemplateThreeColumnEl);
+    applyTemplateThree(TemplateThreeColumnEl);
+  }
 });
