@@ -3,15 +3,17 @@ export function addLink() {
   const linkContainer = document.createElement('div');
   linkContainer.style.marginTop = "5px";
 
+  let inputId = 'professional_link' + String(linkSectionEl.children.length + 1);
   const linkLabel = document.createElement('label');
-  linkLabel.setAttribute('for', 'professional_link');
+  linkLabel.setAttribute('for', inputId);
   linkLabel.innerText = 'Link'
 
   const linkInput = document.createElement('input');
-  linkInput.id = 'professional_link';
+  linkInput.id = inputId;
   linkInput.type = 'url';
   linkInput.name = 'link';
   linkInput.placeholder = 'Enter a URL';
+  console.log(linkInput.id);
 
   const removeButton = document.createElement('button');
   removeButton.innerText = 'Remove';
