@@ -13,7 +13,6 @@ export function addLink() {
   linkInput.type = 'url';
   linkInput.name = 'link';
   linkInput.placeholder = 'Enter a URL';
-  console.log(linkInput.id);
 
   const removeButton = document.createElement('button');
   removeButton.innerText = 'Remove';

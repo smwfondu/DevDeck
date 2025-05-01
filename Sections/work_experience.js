@@ -1,14 +1,17 @@
 export function addWorkExperience() {
     const workExperienceContainer = document.createElement('div');
     workExperienceContainer.classList.add("work-experience");
+    const workExperienceSectionEl = document.getElementById('work_experience');
+
+    let inputUniqueId = String(workExperienceSectionEl.children.length + 1);
 
     // Create the input fields with labels
     const fields = [
-    { label: "Company Name", id: "company_name", placeholder: "XYZ", name: "company_name" },
-    { label: "Position", id: "position", placeholder: "Front-End Developer", name: "position" },
-    { label: "Duration", id: "duration", placeholder: "Duration (e.g., Jan 2020 - Dec 2022)", name: "duration" },
-    { label: "Location", id: "location", placeholder: "Lowell, MA", name: "location" },
-    { label: "Description", id: "description", placeholder: "Description (e.g., Achievements, Responsibilities)", name: "description" }
+    { label: "Company Name", id: "company_name" + inputUniqueId, placeholder: "XYZ", name: "company_name" },
+    { label: "Position", id: "position" + inputUniqueId, placeholder: "Front-End Developer", name: "position" },
+    { label: "Duration", id: "duration" + inputUniqueId, placeholder: "Duration (e.g., Jan 2020 - Dec 2022)", name: "duration" },
+    { label: "Location", id: "location" + inputUniqueId, placeholder: "Lowell, MA", name: "location" },
+    { label: "Description", id: "description" + inputUniqueId, placeholder: "Description (e.g., Achievements, Responsibilities)", name: "description" }
     ];
 
     fields.forEach(field => {
@@ -33,8 +36,6 @@ export function addWorkExperience() {
     entryDiv.appendChild(input);
     workExperienceContainer.appendChild(entryDiv);
     });
-
-    const workExperienceSectionEl = document.getElementById('work_experience');
 
     const removeButton = document.createElement('button'); // Remove button
     removeButton.innerText = "Remove";

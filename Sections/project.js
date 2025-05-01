@@ -1,13 +1,16 @@
 export function addProject() {
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('add_project_manual');
+    const projectSectionEl = document.getElementById('projects');
+
+    let inputUniqueId = String(projectSectionEl.children.length + 1);
 
     // Create the input fields with labels
     const fields = [
-    { label: "Project Name", id: "project_name", placeholder: "DevDeck", name: "project_name" },
-    { label: "Technologies Used", id: "technologies_used", placeholder: "HTML, CSS, JS", name: "technologies_used" },
-    { label: "Description", id: "description", placeholder: "Description (e.g., Features, Achievements)", name: "description" },
-    { label: "Project Link", id: "project_link", placeholder: "Project URL", name: "project_link" }
+    { label: "Project Name", id: "project_name" + inputUniqueId, placeholder: "DevDeck", name: "project_name" },
+    { label: "Technologies Used", id: "technologies_used" + inputUniqueId, placeholder: "HTML, CSS, JS", name: "technologies_used" },
+    { label: "Description", id: "description" + inputUniqueId, placeholder: "Description (e.g., Features, Achievements)", name: "description" },
+    { label: "Project Link", id: "project_link" + inputUniqueId, placeholder: "Project URL", name: "project_link" }
     ];
 
     fields.forEach(field => {
@@ -31,8 +34,6 @@ export function addProject() {
     entryDiv.appendChild(input);
     projectContainer.appendChild(entryDiv);
     });
-
-    const projectSectionEl = document.getElementById('projects');
 
     const removeButton = document.createElement('button'); // Remove button
     removeButton.innerText = "Remove";
