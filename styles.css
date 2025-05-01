@@ -100,10 +100,20 @@ button {
     margin-top: 20px;
 }
 
-button:hover {
-    background-color: #b1abab;
+button:focus {
+    background-color: black;
+    color: white;
 }
 
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.button-header:focus {
+    outline: none;
+    border: solid yellow 3px;
+}
 
 /* Template One */
 #template_one_place {
