@@ -17,7 +17,7 @@ export function applyTemplateOne(TemplateOneColumnEl) {
     TemplateOneColumnEl.appendChild(bioEl);
   
     // Link
-    const githubLinkEl = document.getElementById('link');
+    const githubLinkEl = document.getElementById('sample_link');
     const linkEl = document.createElement('a');
     if (githubLinkEl.value !== ''){
       let userGithubAccount = ('https://github.com/' + String(githubLinkEl.value));
@@ -227,9 +227,9 @@ export function applyTemplateOne(TemplateOneColumnEl) {
     technicalSkills.style.fontSize = "20px";
     TemplateOneColumnEl.appendChild(technicalSkills);
   
-    const skillsSectionEl = document.getElementById('skills');
+    const skillsSectionEl = document.getElementById('multiple_skills');
     const skillsDiv = document.createElement('div');
-    skillsDiv.innerText = skillsSectionEl.children[0].value;
+    skillsDiv.innerText = skillsSectionEl.value;
     TemplateOneColumnEl.appendChild(skillsDiv);
   
     TemplateOneColumnEl.style.padding = "30px 40px";

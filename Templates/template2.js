@@ -24,7 +24,7 @@ export function applyTemplateTwo(TemplateTwoColumnEl) {
     TemplateTwoColumnEl.appendChild(bioEl);
 
     // Link
-    const githubLinkEl = document.getElementById('link');
+    const githubLinkEl = document.getElementById('sample_link');
     const linkEl = document.createElement('a');
     if (githubLinkEl.value !== ''){
         let userGithubAccount = ('https://github.com/' + String(githubLinkEl.value));
@@ -218,9 +218,9 @@ export function applyTemplateTwo(TemplateTwoColumnEl) {
     technicalSkills.style.fontSize = "20px";
     TemplateTwoColumnEl.appendChild(technicalSkills);
 
-    const skillsSectionEl = document.getElementById('skills');
+    const skillsSectionEl = document.getElementById('multiple_skills');
     const skillsDiv = document.createElement('div');
-    skillsDiv.innerText = skillsSectionEl.children[0].value;
+    skillsDiv.innerText = skillsSectionEl.value;
     TemplateTwoColumnEl.appendChild(skillsDiv);
 
     TemplateTwoColumnEl.style.padding = "30px 40px";
