@@ -50,7 +50,10 @@ function displayGitHubProjects(user) {
   user.repositories.forEach((repo, index) => {
 
     /* User "GitHub projects" section */
-    const project = document.createElement('div');
+    const project = document.createElement('a');
+    project.href = "#projects";
+    project.style.textDecoration = 'none';
+    project.style.color = 'black';
     project.innerText = repo.repo_name;
     const addProjectInputEl = document.createElement('input');
     addProjectInputEl.type = "checkbox";
