@@ -79,9 +79,6 @@ function displayGitHubProjects(user) {
     project.addEventListener('click', function() { // Highlight the project the user selects
       displayColumnEl(CustomColumnEl);
 
-      buttonCustomization.style.backgroundColor = "black";
-      buttonCustomization.style.color = "white";
-
       document.querySelectorAll('.project').forEach(el => {
         el.style.border = 'solid 4px transparent';
       });
@@ -304,17 +301,15 @@ const templatesDropdown = document.getElementById('multiple_template');
 templatesDropdown.addEventListener('click', () => {
   const selectedValue = templatesDropdown.value;
   if (selectedValue === 'template_one') {           // Template 1
-    buttonCustomization.removeAttribute('style');
+    console.log('Template one selected');
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateOneColumnEl);
     applyTemplateOne(TemplateOneColumnEl);
   } else if (selectedValue === 'template_two') {    // Template 2
-    buttonCustomization.removeAttribute('style');
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateTwoColumnEl);
     applyTemplateTwo(TemplateTwoColumnEl);
   } else if (selectedValue === 'template_three') {  // Template 3
-    buttonCustomization.removeAttribute('style');
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateThreeColumnEl);
     applyTemplateThree(TemplateThreeColumnEl);
