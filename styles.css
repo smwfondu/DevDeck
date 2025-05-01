@@ -177,7 +177,8 @@ button:hover {
 
 input[type="text"],
 input[type="url"],
-textarea {
+textarea,
+.dropdown_templates {
     outline: none;
     margin-top: 5px;
     margin-bottom: 15px;
@@ -191,8 +192,14 @@ textarea {
 
 input[type="text"]:focus,
 input[type="url"]:focus,
-textarea:focus {
+textarea:focus,
+.dropdown_templates:focus {
     outline: none;
     outline: 2px solid #2962FF;
     outline-offset: 1px;
+}
+
+.label_templates {
+    font-size: 20px;
+    margin-top: 30px;
 }
