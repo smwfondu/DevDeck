@@ -301,7 +301,6 @@ const templatesDropdown = document.getElementById('multiple_template');
 templatesDropdown.addEventListener('click', () => {
   const selectedValue = templatesDropdown.value;
   if (selectedValue === 'template_one') {           // Template 1
-    console.log('Template one selected');
     rightMostColumnEl.style.display = "none";
     displayColumnEl(TemplateOneColumnEl);
     applyTemplateOne(TemplateOneColumnEl);
